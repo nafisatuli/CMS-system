@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //if here another routes client so it will be admin/client already
 
 
-router.get('/', (req, res) => {
+router.get('/dashboard', (req, res) => {
     res.render('admin/dashboard');
 });
 
