@@ -11,13 +11,20 @@ app.engine('handlebars', expressHbrs({
 }));
 app.set('view engine', 'handlebars');
 
+//load Routes
 //main routes
 //we exports out main routes here
-const main = require('./routes/home/main');
+const home = require('./routes/home/index');
 
+//require admin
+const admin = require('./routes/admin/index');
+
+
+
+//Use Routes
 //let application know about main.js router by Middleware
-app.use('/', main); //all functionality going to be here
-
+app.use('/', home); //all functionality going to be here
+app.use('/admin', admin);
 
 
 //listen to the port
