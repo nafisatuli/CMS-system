@@ -17,10 +17,4 @@ router.get('/', (req, res) => {
 //here we dont have to get /admin bcz in the middleware we already told this
 //if here another routes client so it will be admin/client already
 
-
-router.get('/dashboard', (req, res) => {
-    res.render('admin/dashboard');
-});
-
-
 module.exports = router;

@@ -2,6 +2,22 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const expressHbrs = require('express-handlebars');
+const mongoose = require('mongoose');
+
+//mongoose connect
+mongoose.connect('mongodb://localhost:27017/cms', {
+    useNewUrlParser: true
+}).then(db => console.log("Mongo Connected")).catch(error => console.log("Could not connect" + error));
+
+
+
+
+
+
+
+
+
+
 
 app.use(express.static(path.join(__dirname, 'public'))); //for using static files
 
