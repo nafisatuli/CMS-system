@@ -3,17 +3,16 @@ const app = express();
 const path = require('path');
 const expressHbrs = require('express-handlebars');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+mongoose.Promise = global.Promise;
+
 
 //mongoose connect
 mongoose.connect('mongodb://localhost:27017/cms', {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(db => console.log("Mongo Connected")).catch(error => console.log("Could not connect" + error));
-
-
-
-
-
-
 
 
 
@@ -26,6 +25,14 @@ app.engine('handlebars', expressHbrs({
     defaultLayout: 'home'
 }));
 app.set('view engine', 'handlebars');
+
+//Body Parser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+
 
 //load Routes
 //main routes

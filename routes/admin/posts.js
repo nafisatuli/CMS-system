@@ -20,8 +20,8 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-
-    res.send("Worked");
+    console.log(req.body);
+    //res.send("Worked");
 });
 
 module.exports = router;
