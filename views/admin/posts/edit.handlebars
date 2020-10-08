@@ -13,7 +13,7 @@
     type='text'
     class='form-control'
     id='title'
-    placeholder='Enter title'
+    value="{{post.title}}"
   />
 
   <div class='form-group'>
@@ -40,6 +40,9 @@
         name='allowComments'
         type='checkbox'
         class='form-check-input'
+        {{#if post.allowComments}}
+        checked="checked"
+        {{/if}}
         id='allowComments'
       />
       Allow Comments
@@ -50,14 +53,9 @@
     <label for='body'>
       Description
     </label>
-    <textarea
-      name='body'
-      class='form-control'
-      id='body'
-      placeholder='Enter description'
-      cols='30'
-      rows='10'
-    ></textarea>
+    <textarea name='body' class='form-control' id='body' cols='30' rows='10'>
+      {{post.body}}
+    </textarea>
   </div>
 
   <button type='submit' class='btn btn-primary'>

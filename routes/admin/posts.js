@@ -56,7 +56,15 @@ router.post('/create', (req, res) => {
 
 //Edit
 router.get('/edit/:id', (req, res) => {
-    res.send(req.params.id);
+    // res.send(req.params.id);
+    //make a query to post out
+    Post.findOne({
+        _id: req.params.id
+    }).then(post => {
+        res.render('admin/posts/edit', {
+            post: post
+        })
+    });
 
     //res.render('admin/posts/edit');
 });
