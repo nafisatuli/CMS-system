@@ -10,7 +10,16 @@ router.all('/*', (req, res, next) => {
 
 //by default it it /admin/posts
 router.get('/', (req, res) => {
-    res.send('It works');
+    //before render we need to get data
+    //passing nothing is gonna bring everything
+    Post.find({}).then(posts => {
+        res.render('admin/posts', {
+            posts: posts
+        })
+    }).catch(error => {
+        console.log(error);
+    });
+    //res.render('admin/posts');
 });
 
 

@@ -5,6 +5,12 @@ const expressHbrs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const {
+    allowInsecurePrototypeAccess
+} = require('@handlebars/allow-prototype-access');
+const Handlebars = require('handlebars');
+
+
 mongoose.Promise = global.Promise;
 
 
@@ -22,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public'))); //for using static file
 
 //engine
 app.engine('handlebars', expressHbrs({
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
     defaultLayout: 'home'
 }));
 app.set('view engine', 'handlebars');
