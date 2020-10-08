@@ -53,4 +53,10 @@ router.post('/create', (req, res) => {
     });
 });
 
+
+//Edit
+router.get('/edit', (req, res) => {
+    res.render('admin/posts/edit');
+});
+
 module.exports = router;
