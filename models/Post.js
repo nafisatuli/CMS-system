@@ -18,7 +18,7 @@ const PostSchema = new Schema({
     },
     body: {
         type: String,
-        require: true
+        required: true
     }
 });
 

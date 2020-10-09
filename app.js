@@ -21,15 +21,21 @@ mongoose.connect('mongodb://localhost:27017/cms', {
 }).then(db => console.log("Mongo Connected")).catch(error => console.log("Could not connect" + error));
 
 
-
-
-
 app.use(express.static(path.join(__dirname, 'public'))); //for using static files
+
+//register handlebars-helpers function
+const {
+    select
+} = require('./helpers/handlebars-helpers');
+
 
 //engine
 app.engine('handlebars', expressHbrs({
+    defaultLayout: 'home',
+    helpers: {
+        select: select
+    },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-    defaultLayout: 'home'
 }));
 app.set('view engine', 'handlebars');
 
