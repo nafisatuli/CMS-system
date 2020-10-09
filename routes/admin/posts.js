@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 //model
 const Post = require('../../models/Post');
+const {
+    route
+} = require('../home');
 
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'admin';
@@ -67,6 +70,11 @@ router.get('/edit/:id', (req, res) => {
     });
 
     //res.render('admin/posts/edit');
+});
+
+router.put('/edit/:id', (req, res) => {
+
+    res.send('It works');
 });
 
 module.exports = router;

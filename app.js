@@ -4,6 +4,7 @@ const path = require('path');
 const expressHbrs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const {
     allowInsecurePrototypeAccess
@@ -45,6 +46,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+//Method Override
+app.use(methodOverride('_method'));
 
 
 //load Routes
