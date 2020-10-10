@@ -41,7 +41,8 @@ router.post('/create', (req, res) => {
     let filename = '';
     if (!isEmpty(req.files)) {
         let file = req.files.file;
-        filename = file.name;
+        //for having every file name different
+        filename = Date.now() + '_' + file.name;
 
         file.mv('./public/uploads/' + filename, (err) => {
             if (err) throw err;
