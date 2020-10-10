@@ -6,8 +6,10 @@ const {
     route
 } = require('../home');
 const {
-    isEmpty
+    isEmpty,
+    uploadDir
 } = require('../../helpers/upload-helpers');
+const fs = require('fs'); //for file system
 
 
 router.all('/*', (req, res, next) => {
@@ -115,10 +117,14 @@ router.put('/edit/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    Post.remove({
+    Post.findOne({
         _id: req.params.id
-    }).then(result => {
-        res.redirect('/admin/posts');
+    }).then(post => {
+
+        fs.unlink(uploadDir + post.file, (err) => {
+            post.remove();
+            res.redirect('/admin/posts');
+        });
     }).catch(error => {
         console.log(error);
     });
