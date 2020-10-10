@@ -5,6 +5,10 @@ const Post = require('../../models/Post');
 const {
     route
 } = require('../home');
+const {
+    isEmpty
+} = require('../../helpers/upload-helpers');
+
 
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'admin';
@@ -33,27 +37,35 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    console.log(req.files);
-    //res.send('worked');
-    //console.log(req.body);
-    // let allowComments = true;
-    // if (req.body.allowComments) {
-    //     allowComments = true;
-    // } else {
-    //     allowComments = false;
-    // }
 
-    // const newPost = new Post({
-    //     title: req.body.title,
-    //     status: req.body.status,
-    //     allowComments: allowComments,
-    //     body: req.body.body
-    // });
-    // newPost.save().then(savedPost => {
-    //     res.redirect('/admin/posts');
-    // }).catch(error => {
-    //     console.log("could not save");
-    // });
+    if (!isEmpty(req.files)) {
+        let file = req.files.file;
+        let filename = file.name;
+
+        file.mv('./public/uploads/' + filename, (err) => {
+            if (err) throw err;
+        });
+
+    }
+
+    let allowComments = true;
+    if (req.body.allowComments) {
+        allowComments = true;
+    } else {
+        allowComments = false;
+    }
+
+    const newPost = new Post({
+        title: req.body.title,
+        status: req.body.status,
+        allowComments: allowComments,
+        body: req.body.body
+    });
+    newPost.save().then(savedPost => {
+        res.redirect('/admin/posts');
+    }).catch(error => {
+        console.log("could not save");
+    });
 });
 
 

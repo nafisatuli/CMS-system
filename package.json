@@ -20,6 +20,7 @@
     "faker": "^5.1.0",
     "handlebars": "^4.7.6",
     "method-override": "^3.0.0",
-    "mongoose": "^5.10.7"
+    "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4"
   }
 }
