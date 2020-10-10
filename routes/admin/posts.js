@@ -33,27 +33,27 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-
+    console.log(req.files);
     //res.send('worked');
     //console.log(req.body);
-    let allowComments = true;
-    if (req.body.allowComments) {
-        allowComments = true;
-    } else {
-        allowComments = false;
-    }
+    // let allowComments = true;
+    // if (req.body.allowComments) {
+    //     allowComments = true;
+    // } else {
+    //     allowComments = false;
+    // }
 
-    const newPost = new Post({
-        title: req.body.title,
-        status: req.body.status,
-        allowComments: allowComments,
-        body: req.body.body
-    });
-    newPost.save().then(savedPost => {
-        res.redirect('/admin/posts');
-    }).catch(error => {
-        console.log("could not save");
-    });
+    // const newPost = new Post({
+    //     title: req.body.title,
+    //     status: req.body.status,
+    //     allowComments: allowComments,
+    //     body: req.body.body
+    // });
+    // newPost.save().then(savedPost => {
+    //     res.redirect('/admin/posts');
+    // }).catch(error => {
+    //     console.log("could not save");
+    // });
 });
 
 

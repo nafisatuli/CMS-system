@@ -57,7 +57,6 @@ app.use(methodOverride('_method'));
 //main routes
 //we exports out main routes here
 const home = require('./routes/home/index');
-
 //require admin
 const admin = require('./routes/admin/index');
 const posts = require('./routes/admin/posts');
