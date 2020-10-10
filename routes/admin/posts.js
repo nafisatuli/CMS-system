@@ -40,37 +40,56 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
 
-    let filename = '';
-    if (!isEmpty(req.files)) {
-        let file = req.files.file;
-        //for having every file name different
-        filename = Date.now() + '_' + file.name;
-
-        file.mv('./public/uploads/' + filename, (err) => {
-            if (err) throw err;
+    let errors = [];
+    if (!req.body.title) {
+        errors.push({
+            message: 'please add a title'
         });
-
     }
-
-    let allowComments = true;
-    if (req.body.allowComments) {
-        allowComments = true;
+    if (!req.body.body) {
+        errors.push({
+            message: 'please add a description'
+        });
+    }
+    if (errors.length > 0) {
+        res.render('admin/posts/create', {
+            errors: errors
+        })
     } else {
-        allowComments = false;
+
+        let filename = '';
+        if (!isEmpty(req.files)) {
+            let file = req.files.file;
+            //for having every file name different
+            filename = Date.now() + '_' + file.name;
+
+            file.mv('./public/uploads/' + filename, (err) => {
+                if (err) throw err;
+            });
+
+        }
+
+        let allowComments = true;
+        if (req.body.allowComments) {
+            allowComments = true;
+        } else {
+            allowComments = false;
+        }
+
+        const newPost = new Post({
+            title: req.body.title,
+            status: req.body.status,
+            allowComments: allowComments,
+            body: req.body.body,
+            file: filename
+        });
+        newPost.save().then(savedPost => {
+            res.redirect('/admin/posts');
+        }).catch(error => {
+            console.log(error, "could not save");
+        });
     }
 
-    const newPost = new Post({
-        title: req.body.title,
-        status: req.body.status,
-        allowComments: allowComments,
-        body: req.body.body,
-        file: filename
-    });
-    newPost.save().then(savedPost => {
-        res.redirect('/admin/posts');
-    }).catch(error => {
-        console.log("could not save");
-    });
 });
 
 

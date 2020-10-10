@@ -1,11 +1,24 @@
 <h1>Create Post</h1>
 
+{{#each errors}}
+
+    <div class="alert alert-danger">
+
+          {{message}}
+
+
+    </div>
+
+    
+{{/each}}
+
+
 
 <form action='/admin/posts/create' method='post' enctype="multipart/form-data">
 
     <div class='form-group'>
         <label for='title'>Title</label>
-        <input name='title'type='text'class='form-control'id='title'placeholder='Enter title'/>
+        <input name='title'type='text'class='form-control'id='title'placeholder='Enter title' required/>
 
     </div>
 
@@ -44,7 +57,7 @@
 
     <div class='form-group'>
         <label for='body'>Description</label>
-        <textarea name='body' placeholder='Enter description'cols='30'rows='10' class="form-control" id='body'></textarea>
+        <textarea name='body' placeholder='Enter description'cols='30'rows='10' class="form-control" id='body' required></textarea>
     </div>
 
 
