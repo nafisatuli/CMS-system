@@ -38,9 +38,10 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res) => {
 
+    let filename = '';
     if (!isEmpty(req.files)) {
         let file = req.files.file;
-        let filename = file.name;
+        filename = file.name;
 
         file.mv('./public/uploads/' + filename, (err) => {
             if (err) throw err;
@@ -59,7 +60,8 @@ router.post('/create', (req, res) => {
         title: req.body.title,
         status: req.body.status,
         allowComments: allowComments,
-        body: req.body.body
+        body: req.body.body,
+        file: filename
     });
     newPost.save().then(savedPost => {
         res.redirect('/admin/posts');
