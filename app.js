@@ -31,14 +31,14 @@ app.use(express.static(path.join(__dirname, 'public'))); //for using static file
 //register handlebars-helpers function
 const {
     select,
-    generateTime
+    generateDate
 } = require('./helpers/handlebars-helpers');
 //engine
 app.engine('handlebars', expressHbrs({
     defaultLayout: 'home',
     helpers: {
         select: select,
-        generateTime: generateTime
+        generateDate: generateDate
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
 }));

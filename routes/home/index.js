@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
+//bring post
+const Post = require('../../models/Post');
 
 
 router.all('/*', (req, res, next) => {
@@ -10,7 +11,17 @@ router.all('/*', (req, res, next) => {
 
 
 router.get('/', (req, res) => {
-    res.render('home/index');
+
+    //find all post
+    Post.find({}).then(posts => {
+
+        res.render('home/index', {
+            posts: posts
+        }).catch(error => {
+            console.log(error);
+        });
+    });
+
 });
 router.get('/about', (req, res) => {
     res.render('home/about');
