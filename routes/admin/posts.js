@@ -128,6 +128,16 @@ router.put('/edit/:id', (req, res) => {
             post.allowComments = allowComments;
             post.body = req.body.body;
 
+            if (!isEmpty(req.files)) {
+                let file = req.files.file;
+                filename = Date.now() + '_' + file.name;
+                post.file = filename;
+                file.mv('./public/uploads/' + filename, (err) => {
+                    if (err) throw err;
+                });
+
+            }
+
             post.save().then(updatedPost => {
                 res.redirect('/admin/posts');
             }).catch(error => {
