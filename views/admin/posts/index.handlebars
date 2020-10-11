@@ -19,6 +19,7 @@
       <th>
         Allow Comments
       </th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,9 @@
         </td>
         <td>
           {{allowComments}}
+        </td>
+        <td>
+          {{generateTime date 'MMMM Do YYYY'}}
         </td>
         <td>
           <a href="/admin/posts/edit/{{id}}" class='btn btn-info'>
