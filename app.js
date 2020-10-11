@@ -11,6 +11,9 @@ const {
     allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
+//for flash msg
+const session = require('express-session');
+const flash = require('connect-flash');
 
 
 mongoose.Promise = global.Promise;
@@ -52,6 +55,18 @@ app.use(bodyParser.json());
 //Method Override
 app.use(methodOverride('_method'));
 
+//Session
+app.use(session({
+    secret: 'nafisahasan',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(flash());
+//set up local variables using middleware for handlebars
+app.use((req, res, next) => {
+    res.locals.success_message = req.flash('success_message');
+    next();
+});
 
 //load Routes
 //main routes
