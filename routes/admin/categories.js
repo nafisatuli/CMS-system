@@ -31,5 +31,15 @@ router.post('/create', (req, res) => {
 });
 
 
+router.get('/edit/:id', (req, res) => {
 
+    Category.findOne({
+        _id: req.params.id
+    }).then(category => {
+
+        res.render('admin/categories/edit', {
+            category: category
+        });
+    });
+});
 module.exports = router;
