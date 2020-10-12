@@ -21,15 +21,19 @@
                  <tr>
                      <th>Id</th>
                      <th>Name</th>
-                     <th>Date</th>
                  </tr>
              </thead>
               <tbody>
+               {{#each categories}}
+                 
+
                   <tr>
-                      <td>432543</td>
-                      <td>Java</td>
-                      <td>Jan 1 2020</td>
+                      <td>{{id}}</td>
+                      <td>{{name}}</td>
                   </tr>
+
+                {{/each}}
+
               </tbody>
 
 
