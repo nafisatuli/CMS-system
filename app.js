@@ -77,6 +77,7 @@ const home = require('./routes/home/index');
 //require admin
 const admin = require('./routes/admin/index');
 const posts = require('./routes/admin/posts');
+const categories = require('./routes/admin/categories');
 
 
 //Use Routes
@@ -84,6 +85,8 @@ const posts = require('./routes/admin/posts');
 app.use('/', home); //all functionality going to be here
 app.use('/admin', admin);
 app.use('/admin/posts', posts);
+app.use('/admin/categories', categories);
+
 
 //listen to the port
 app.listen(4500, () => {
