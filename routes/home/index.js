@@ -43,17 +43,58 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
 
+    //validation in server
+    let errors = [];
     const newUser = new User({
 
         firstName: req.body.firstName,
-        firstName: req.body.lastName,
-        firstName: req.body.email,
-        firstName: req.body.password,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password,
 
     });
 
+    if (!req.body.firstName) {
+        errors.push({
+            message: 'please add a first name'
+        });
+    }
+    if (!req.body.lastName) {
+        errors.push({
+            message: 'please add a last name'
+        });
+    }
+    if (!req.body.email) {
+        errors.push({
+            message: 'please add an email'
+        });
+    }
+    if (!req.body.password) {
+        errors.push({
+            message: 'please enter a password'
+        });
+    }
+    if (!req.body.passwordConfirm) {
+        errors.push({
+            message: 'please confirm password'
+        });
+    }
 
-    res.send('home/register');
+    if (req.body.password !== req.body.passwordConfirm) {
+        errors.push({
+            message: 'Password did not match'
+        });
+    }
+
+
+    if (errors.length > 0) {
+        res.render('home/register', {
+            errors: errors
+        });
+    } else {
+        res.send('Data is good');
+    }
+
 });
 
 
