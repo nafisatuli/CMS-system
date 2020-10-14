@@ -36,6 +36,14 @@ router.get('/login', (req, res) => {
     res.render('home/login');
 });
 
+router.post('/login', (req, res) => {
+    res.send('login post');
+});
+
+
+
+
+
 router.get('/register', (req, res) => {
     res.render('home/register');
 });

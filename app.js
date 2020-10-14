@@ -8,6 +8,11 @@ const methodOverride = require('method-override');
 const upload = require('express-fileupload');
 
 const {
+    mongoDbUrl
+} = require('./config/database');
+
+
+const {
     allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
@@ -20,7 +25,7 @@ mongoose.Promise = global.Promise;
 
 
 //mongoose connect
-mongoose.connect('mongodb://localhost:27017/cms', {
+mongoose.connect(mongoDbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(db => console.log("Mongo Connected")).catch(error => console.log("Could not connect" + error));
