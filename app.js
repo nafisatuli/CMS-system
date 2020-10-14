@@ -67,6 +67,7 @@ app.use(flash());
 //set up local variables using middleware for handlebars
 app.use((req, res, next) => {
     res.locals.success_message = req.flash('success_message');
+    res.locals.error_message = req.flash('error_message');
     next();
 });
 

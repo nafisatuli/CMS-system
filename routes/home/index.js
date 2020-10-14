@@ -85,32 +85,49 @@ router.post('/register', (req, res) => {
     }
     if (errors.length > 0) {
         res.render('home/register', {
-            errors: errors
+            errors: errors,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email
         });
     } else {
 
-        const newUser = new User({
+        //find user already exist
+        User.findOne({
+            email: req.body.email
+        }).then(user => {
 
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password,
 
-        });
-        //salt is a random string of characters
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (!user) {
+                const newUser = new User({
 
-                newUser.password = hash;
-                //console.log(hash);
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: req.body.password,
 
-                newUser.save().then(savedUser => {
-
-                    req.flash('success_message', 'You are now registered, please login');
-                    res.redirect('/login');
                 });
-            });
+                //salt is a random string of characters
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+
+                        newUser.password = hash;
+                        //console.log(hash);
+
+                        newUser.save().then(savedUser => {
+
+                            req.flash('success_message', 'You are now registered, please login');
+                            res.redirect('/login');
+                        });
+                    });
+                });
+            } else {
+                req.flash('error_message', 'The email already exists, please login');
+                res.redirect('/login');
+            }
         });
+
+
 
     }
 
