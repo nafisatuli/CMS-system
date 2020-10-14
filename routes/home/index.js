@@ -78,7 +78,11 @@ router.post('/register', (req, res) => {
         });
     }
 
-
+    if (req.body.password.length < 6) {
+        errors.push({
+            message: 'Password must contain at least 6 numbers or characters'
+        });
+    }
     if (errors.length > 0) {
         res.render('home/register', {
             errors: errors
@@ -100,15 +104,12 @@ router.post('/register', (req, res) => {
                 newUser.password = hash;
                 //console.log(hash);
 
-
                 newUser.save().then(savedUser => {
 
                     res.send('user is saved');
-
                 });
             });
         });
-
 
     }
 
