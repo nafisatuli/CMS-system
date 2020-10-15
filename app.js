@@ -11,11 +11,13 @@ const {
     mongoDbUrl
 } = require('./config/database');
 
+const passport = require('passport');
 
 const {
     allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
+
 //for flash msg
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -69,8 +71,17 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(flash());
+
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 //set up local variables using middleware for handlebars
 app.use((req, res, next) => {
+
+    res.locals.user = req.user || null;
+
     res.locals.success_message = req.flash('success_message');
     res.locals.error_message = req.flash('error_message');
     next();
@@ -84,6 +95,7 @@ const home = require('./routes/home/index');
 const admin = require('./routes/admin/index');
 const posts = require('./routes/admin/posts');
 const categories = require('./routes/admin/categories');
+
 
 
 //Use Routes
