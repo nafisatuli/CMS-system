@@ -76,6 +76,11 @@ router.post('/login', function (req, res, next) {
     failureRedirect: '/login',
     failureFlash: true
   })(req, res, next);
+}); //logout
+
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/login');
 });
 router.get('/register', function (req, res) {
   res.render('home/register');
