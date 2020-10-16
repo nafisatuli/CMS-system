@@ -1,0 +1,37 @@
+const express = require('express');
+const router = express.Router();
+const Comment = require('../../models/Comment');
+const Post = require('../../models/Post');
+
+
+router.post('/', (req, res) => {
+
+    //find specific post and the id
+    Post.findOne({
+        _id: req.body.id
+    }).then(post => {
+
+        const newComment = new Comment({
+
+            user: req.user.id,
+            body: req.body.body
+        });
+
+        //grap the post and push new comment
+        post.comments.push(newComment);
+        //save the post
+        post.save().then(savedPost => {
+
+            //save the comment
+            newComment.save().then(savedComment => {
+                res.redirect(`/post/${post.id}`);
+            })
+        });
+
+    });
+
+});
+
+
+
+module.exports = router;
