@@ -63,10 +63,8 @@ router.delete('/:id', (req, res) => {
     Comment.deleteOne({
         _id: req.params.id
     }).then(deletedComment => {
-
-
         res.redirect('/admin/comments');
-    })
+    });
 
 });
 

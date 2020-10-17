@@ -4,6 +4,7 @@ const fs = require('fs'); //for file system
 //model
 const Post = require('../../models/Post');
 const Category = require('../../models/Category');
+const Comment = require('../../models/Comment');
 const {
     route
 } = require('../home');
@@ -171,18 +172,52 @@ router.put('/edit/:id', (req, res) => {
     //res.send('It works');
 });
 
-router.delete('/:id', (req, res) => {
-    Post.findOne({
-        _id: req.params.id
-    }).then(post => {
-        req.flash('success_message', 'Post was successfully deleted');
-        fs.unlink(uploadDir + post.file, (err) => {
-            post.remove();
-            res.redirect('/admin/posts');
-        });
-    }).catch(error => {
-        console.log(error);
-    });
-});
+// router.delete('/:id', (req, res) => {
+//     Post.findOne({
+//             _id: req.params.id
+//         }).populate('comments')
+//         .then(post => {
 
+//             fs.unlink(uploadDir + post.file, (err) => {
+
+//                 if (!post.comments.length < 1) {
+
+//                     post.comments.forEach(comment => {
+//                         comment.remove();
+//                     });
+//                 }
+
+//                 post.remove().then(removedPost => {
+
+//                     req.flash('success_message', 'Post was succesfully deleted');
+//                     res.redirect('/admin/posts');
+//                 });
+//             });
+
+//         });
+// });
+
+router.delete('/:id', (req, res) => {
+
+
+    Post.findByIdAndDelete(req.params.id)
+        .then((post) => {
+            if (post.comments.length > 0) {
+                Comment.deleteMany({
+                    _id: {
+                        $in: post.comments
+                    }
+                }).then(deletedComments => {
+                    console.log(deletedComments)
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+
+            fs.unlink(uploadDir + post.file, () => {
+                req.flash('success_message', "Post was successfully deleted");
+                res.redirect("/admin/posts");
+            });
+        });
+});
 module.exports = router;

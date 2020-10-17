@@ -12,6 +12,8 @@ var Post = require('../../models/Post');
 
 var Category = require('../../models/Category');
 
+var Comment = require('../../models/Comment');
+
 var _require = require('../home'),
     route = _require.route;
 
@@ -149,18 +151,43 @@ router.put('/edit/:id', function (req, res) {
       console.log(error);
     });
   }); //res.send('It works');
-});
+}); // router.delete('/:id', (req, res) => {
+//     Post.findOne({
+//             _id: req.params.id
+//         }).populate('comments')
+//         .then(post => {
+//             fs.unlink(uploadDir + post.file, (err) => {
+//                 if (!post.comments.length < 1) {
+//                     post.comments.forEach(comment => {
+//                         comment.remove();
+//                     });
+//                 }
+//                 post.remove().then(removedPost => {
+//                     req.flash('success_message', 'Post was succesfully deleted');
+//                     res.redirect('/admin/posts');
+//                 });
+//             });
+//         });
+// });
+
 router["delete"]('/:id', function (req, res) {
-  Post.findOne({
-    _id: req.params.id
-  }).then(function (post) {
-    req.flash('success_message', 'Post was successfully deleted');
-    fs.unlink(uploadDir + post.file, function (err) {
-      post.remove();
-      res.redirect('/admin/posts');
+  Post.findByIdAndDelete(req.params.id).then(function (post) {
+    if (post.comments.length > 0) {
+      Comment.deleteMany({
+        _id: {
+          $in: post.comments
+        }
+      }).then(function (deletedComments) {
+        console.log(deletedComments);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+
+    fs.unlink(uploadDir + post.file, function () {
+      req.flash('success_message', "Post was successfully deleted");
+      res.redirect("/admin/posts");
     });
-  })["catch"](function (error) {
-    console.log(error);
   });
 });
 module.exports = router;
