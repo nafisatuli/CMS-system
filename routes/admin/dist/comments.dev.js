@@ -8,6 +8,17 @@ var Comment = require('../../models/Comment');
 
 var Post = require('../../models/Post');
 
+router.all('/*', function (req, res, next) {
+  req.app.locals.layout = 'admin';
+  next();
+});
+router.get('/', function (req, res) {
+  Comment.find({}).populate('user').then(function (comments) {
+    res.render('admin/comments', {
+      comments: comments
+    });
+  }); // res.render('admin/comments');
+});
 router.post('/', function (req, res) {
   //find specific post and the id
   Post.findOne({
@@ -26,6 +37,14 @@ router.post('/', function (req, res) {
         res.redirect("/post/".concat(post.id));
       });
     });
+  });
+}); //delete
+
+router["delete"]('/:id', function (req, res) {
+  Comment.deleteOne({
+    _id: req.params.id
+  }).then(function (deletedComment) {
+    res.redirect('/admin/comments');
   });
 });
 module.exports = router;

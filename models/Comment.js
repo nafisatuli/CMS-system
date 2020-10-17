@@ -4,13 +4,18 @@ const CommentSchema = new Schema({
 
     user: {
         type: Schema.Types.ObjectId,
-        req: 'users',
+        ref: 'users',
         required: true
     },
     body: {
         type: String,
         required: true
 
+    },
+
+    date: {
+        type: Date,
+        default: Date.now()
     }
 });
 

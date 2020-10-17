@@ -4,6 +4,30 @@ const Comment = require('../../models/Comment');
 const Post = require('../../models/Post');
 
 
+router.all('/*', (req, res, next) => {
+
+    req.app.locals.layout = 'admin';
+    next();
+
+});
+
+
+router.get('/', (req, res) => {
+
+    Comment.find({}).populate('user')
+        .then(comments => {
+
+            res.render('admin/comments', {
+                comments: comments
+            });
+        });
+
+    // res.render('admin/comments');
+});
+
+
+
+
 router.post('/', (req, res) => {
 
     //find specific post and the id
@@ -32,6 +56,18 @@ router.post('/', (req, res) => {
 
 });
 
+//delete
 
+router.delete('/:id', (req, res) => {
+
+    Comment.deleteOne({
+        _id: req.params.id
+    }).then(deletedComment => {
+
+
+        res.redirect('/admin/comments');
+    })
+
+});
 
 module.exports = router;
