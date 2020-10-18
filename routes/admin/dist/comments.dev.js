@@ -13,7 +13,9 @@ router.all('/*', function (req, res, next) {
   next();
 });
 router.get('/', function (req, res) {
-  Comment.find({}).populate('user').then(function (comments) {
+  Comment.find({
+    user: req.user.id
+  }).populate('user').then(function (comments) {
     res.render('admin/comments', {
       comments: comments
     });
@@ -39,12 +41,22 @@ router.post('/', function (req, res) {
     });
   });
 }); //delete
+//delete comment with post reference
 
 router["delete"]('/:id', function (req, res) {
   Comment.deleteOne({
     _id: req.params.id
   }).then(function (deletedComment) {
-    res.redirect('/admin/comments');
+    Post.findOneAndUpdate({
+      comments: req.params.id
+    }, {
+      $pull: {
+        comments: req.params.id
+      }
+    }, function (err, data) {
+      if (err) console.log(err);
+      res.redirect('/admin/comments');
+    });
   });
 });
 module.exports = router;
