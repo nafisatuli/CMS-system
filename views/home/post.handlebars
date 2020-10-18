@@ -29,6 +29,9 @@
 
           <hr>
 
+       {{#if user}}
+
+        {{#if post.allowComments}}
           <!-- Comments Form -->
           <div class="card my-4">
             <h5 class="card-header">Leave a Comment:</h5>
@@ -42,6 +45,20 @@
               </form>
             </div>
           </div>
+
+          {{else}}
+          <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Comments are not allowed for this post</h3>
+          <br>
+          <hr>
+
+          {{/if}}
+
+       {{else}}
+              
+          <h4 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">You need to <a href="/login">login</a> to comment</h4>
+          <br>
+          <hr>
+       {{/if}}
 
           <!-- Single Comment -->
           <div class="media mb-4">
