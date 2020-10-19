@@ -34,7 +34,7 @@ const PostSchema = new Schema({
         comments: [{
             //keeping all the ids of the comments in array
             type: Schema.Types.ObjectId,
-            req: 'comments'
+            ref: 'comments'
         }]
     },
 
