@@ -4,6 +4,11 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var PostSchema = new Schema({
+  //user for post
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
+  },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'categories'

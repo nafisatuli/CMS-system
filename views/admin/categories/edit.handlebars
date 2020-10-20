@@ -1,5 +1,5 @@
-<h1>Edit Category</h1>
-<div class="row">
+<h1 style="font-family: cursive;font-weight:bold; margin:20px 0px 50px 80px;">Edit Category</h1>
+<div class="row" style="width:2000px; margin:0 auto;">
     <div class="col-sm-4">
        <form action="/admin/categories/edit/{{category.id}}?_method=PUT" method="post">
              <div class="form group">
@@ -7,7 +7,7 @@
                 <input value="{{category.name}}" type="text" name="name" placeholder="Enter Title" class="form-control">
             </div>
 
-         <button class="btn btn-primary">Update Category</button>
+         <button class="btn btn-primary" style="margin-top:20px;">Update Category</button>
        </form>
     </div>
 </div>

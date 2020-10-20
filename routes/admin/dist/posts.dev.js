@@ -40,6 +40,18 @@ router.get('/', function (req, res) {
   })["catch"](function (error) {
     console.log(error);
   }); //res.render('admin/posts');
+}); //my post
+
+router.get('/my-posts', function (req, res) {
+  Post.find({
+    user: req.user.id
+  }).populate('category').then(function (posts) {
+    res.render('admin/posts/my-posts', {
+      posts: posts
+    });
+  })["catch"](function (error) {
+    console.log(error);
+  });
 });
 router.get('/create', function (req, res) {
   Category.find({}).then(function (categories) {
@@ -88,6 +100,7 @@ router.post('/create', function (req, res) {
     }
 
     var newPost = new Post({
+      user: req.user.id,
       title: req.body.title,
       status: req.body.status,
       allowComments: _allowComments,
@@ -129,6 +142,7 @@ router.put('/edit/:id', function (req, res) {
       allowComments = false;
     }
 
+    post.user = req.user.id;
     post.title = req.body.title;
     post.status = req.body.status;
     post.allowComments = allowComments;

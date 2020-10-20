@@ -41,6 +41,24 @@ router.get('/', (req, res) => {
     //res.render('admin/posts');
 });
 
+//my post
+router.get('/my-posts', (req, res) => {
+
+    Post.find({
+            user: req.user.id
+        })
+        .populate('category')
+        .then(posts => {
+            res.render('admin/posts/my-posts', {
+                posts: posts
+            })
+        }).catch(error => {
+            console.log(error);
+        });
+});
+
+
+
 
 
 router.get('/create', (req, res) => {
@@ -92,6 +110,7 @@ router.post('/create', (req, res) => {
         }
 
         const newPost = new Post({
+            user: req.user.id,
             title: req.body.title,
             status: req.body.status,
             allowComments: allowComments,
@@ -144,6 +163,7 @@ router.put('/edit/:id', (req, res) => {
                 allowComments = false;
             }
 
+            post.user = req.user.id;
             post.title = req.body.title;
             post.status = req.body.status;
             post.allowComments = allowComments;

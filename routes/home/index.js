@@ -222,6 +222,7 @@ router.get('/post/:id', (req, res) => {
                 model: 'users'
             }
         })
+        .populate('user')
         .then(post => {
 
             Category.find({}).then(categories => {

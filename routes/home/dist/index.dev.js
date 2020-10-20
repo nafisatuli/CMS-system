@@ -178,7 +178,7 @@ router.get('/post/:id', function (req, res) {
       path: 'user',
       model: 'users'
     }
-  }).then(function (post) {
+  }).populate('user').then(function (post) {
     Category.find({}).then(function (categories) {
       res.render('home/post', {
         post: post,

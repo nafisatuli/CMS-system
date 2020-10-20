@@ -1,4 +1,4 @@
-<h1 style="font-family: cursive;text-align:center;font-weight:bold; margin-bottom:50px;">All Posts</h1>
+<h1 style="font-family: cursive;text-align:center;font-weight:bold; margin-bottom:50px;">My Posts</h1>
 
 
 <table class='table table-bordered'>
@@ -45,7 +45,21 @@
           {{generateDate date 'MMMM Do YYYY'}}
         </td>
         <td><a href="/post/{{id}}">View</a></td>
-       
+        <td>
+          <a href="/admin/posts/edit/{{id}}" class='btn btn-info'>
+            Edit
+          </a>
+        </td>
+         <td>
+          
+             <form action="/admin/posts/{{id}}?_method=DELETE" method="post">
+
+                <button type="submit" class="btn btn-danger">Delete</button>
+             </form>
+
+
+
+        </td>
       </tr>
     {{/each}}
   </tbody>
