@@ -160,7 +160,7 @@ router.put('/edit/:id', function (req, res) {
 
     post.save().then(function (updatedPost) {
       req.flash('success_message', 'Post was successfully updated');
-      res.redirect('/admin/posts');
+      res.redirect('/admin/posts/my-posts');
     })["catch"](function (error) {
       console.log(error);
     });
@@ -200,7 +200,7 @@ router["delete"]('/:id', function (req, res) {
 
     fs.unlink(uploadDir + post.file, function () {
       req.flash('success_message', "Post was successfully deleted");
-      res.redirect("/admin/posts");
+      res.redirect("/admin/posts/my-posts");
     });
   });
 });

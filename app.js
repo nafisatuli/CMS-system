@@ -29,7 +29,8 @@ mongoose.Promise = global.Promise;
 //mongoose connect
 mongoose.connect(mongoDbUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 }).then(db => console.log("Mongo Connected")).catch(error => console.log("Could not connect" + error));
 
 
@@ -107,6 +108,7 @@ app.use('/admin', admin);
 app.use('/admin/posts', posts);
 app.use('/admin/categories', categories);
 app.use('/admin/comments', comments);
+
 
 //listen to the port
 app.listen(4500, () => {
