@@ -6,6 +6,7 @@
     <tr>
       <th>id</th>
       <th>Owner</th>
+      <th>Status</th>
       <th>Date</th>
     </tr>
   </thead>
@@ -17,7 +18,9 @@
     <tr>
       <td>{{id}}</td>
       <td>{{user.firstName}} {{user.lastName}}</td>
-      <td>{{generateDate date 'MMMM Do YYYY'}}</td>
+      
+      <td><input type="checkbox" name="approveComment"></td>
+       <td>{{generateDate date 'MMMM Do YYYY'}}</td>
       <td>
          <form action="/admin/comments/{{id}}?_method=DELETE" method="post"> 
            
