@@ -220,6 +220,9 @@ router.get('/post/:id', (req, res) => {
         })
         .populate({
             path: 'comments',
+            match: {
+                approveComment: true
+            },
             populate: {
                 path: 'user',
                 model: 'users'

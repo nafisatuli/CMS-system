@@ -13,7 +13,8 @@ var CommentSchema = new Schema({
     required: true
   },
   approveComment: {
-    type: Boolean
+    type: Boolean,
+    "default": false
   },
   date: {
     type: Date,
