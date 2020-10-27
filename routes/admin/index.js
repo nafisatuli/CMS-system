@@ -5,6 +5,8 @@ const {
 const router = express.Router();
 const faker = require('faker');
 const Post = require('../../models/Post');
+const Comment = require('../../models/Comment');
+const Category = require('../../models/Category');
 
 const {
     userAuthenticated
@@ -19,7 +21,22 @@ router.all('/*', userAuthenticated, (req, res, next) => {
 
 
 router.get('/', (req, res) => {
-    res.render('admin/index');
+
+    //need to count data for admin dashboard
+    Post.count({}).then(postCount => {
+        Comment.count({}).then(commentCount => {
+
+            Category.count({}).then(categoryCount => {
+
+                res.render('admin/index', {
+                    postCount: postCount,
+                    commentCount: commentCount,
+                    categoryCount: categoryCount
+                });
+            });
+        });
+    });
+    //res.render('admin/index');
 });
 
 //here we dont have to get /admin bcz in the middleware we already told this

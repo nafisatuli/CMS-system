@@ -11,6 +11,10 @@ var faker = require('faker');
 
 var Post = require('../../models/Post');
 
+var Comment = require('../../models/Comment');
+
+var Category = require('../../models/Category');
+
 var _require2 = require('../../helpers/authentication'),
     userAuthenticated = _require2.userAuthenticated; //override default layout
 //by /* it  is affecting after admin,anything after admin;
@@ -21,7 +25,18 @@ router.all('/*', userAuthenticated, function (req, res, next) {
   next();
 });
 router.get('/', function (req, res) {
-  res.render('admin/index');
+  //need to count data for admin dashboard
+  Post.count({}).then(function (postCount) {
+    Comment.count({}).then(function (commentCount) {
+      Category.count({}).then(function (categoryCount) {
+        res.render('admin/index', {
+          postCount: postCount,
+          commentCount: commentCount,
+          categoryCount: categoryCount
+        });
+      });
+    });
+  }); //res.render('admin/index');
 }); //here we dont have to get /admin bcz in the middleware we already told this
 //if here another routes client so it will be admin/client already
 //for dummy data creation

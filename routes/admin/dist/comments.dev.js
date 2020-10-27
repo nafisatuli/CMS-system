@@ -15,7 +15,7 @@ router.all('/*', function (req, res, next) {
 router.get('/', function (req, res) {
   Comment.find({
     //req.user.id
-    user: '5f87ebf4b30ad41a7c58d04a'
+    user: req.user.id
   }).populate('user').then(function (comments) {
     res.render('admin/comments', {
       comments: comments
@@ -37,7 +37,7 @@ router.post('/', function (req, res) {
     post.save().then(function (savedPost) {
       //save the comment
       newComment.save().then(function (savedComment) {
-        req.flash('success_message', 'Your comment will be reviewed soon, please wait.');
+        req.flash('success_message', 'Your comment will be reviewed.');
         res.redirect("/post/".concat(post.id));
       });
     });

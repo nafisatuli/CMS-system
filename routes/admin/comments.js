@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
     Comment.find({
             //req.user.id
-            user: '5f87ebf4b30ad41a7c58d04a'
+            user: req.user.id
         }).populate('user')
         .then(comments => {
 
@@ -52,7 +52,7 @@ router.post('/', (req, res) => {
             //save the comment
             newComment.save().then(savedComment => {
 
-                req.flash('success_message', 'Your comment will be reviewed soon, please wait.');
+                req.flash('success_message', 'Your comment will be reviewed.');
                 res.redirect(`/post/${post.id}`);
             })
         });
