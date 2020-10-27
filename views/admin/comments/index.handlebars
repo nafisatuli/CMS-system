@@ -19,7 +19,7 @@
       <td>{{id}}</td>
       <td>{{user.firstName}} {{user.lastName}}</td>
       
-      <td><input type="checkbox" name="approveComment"></td>
+      <td><input data-id={{id}} type="checkbox" name="approveComment"></td>
        <td>{{generateDate date 'MMMM Do YYYY'}}</td>
       <td>
          <form action="/admin/comments/{{id}}?_method=DELETE" method="post"> 

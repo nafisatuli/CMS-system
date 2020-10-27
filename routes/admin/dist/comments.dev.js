@@ -14,7 +14,8 @@ router.all('/*', function (req, res, next) {
 });
 router.get('/', function (req, res) {
   Comment.find({
-    user: req.user.id
+    //req.user.id
+    user: '5f87ebf4b30ad41a7c58d04a'
   }).populate('user').then(function (comments) {
     res.render('admin/comments', {
       comments: comments
@@ -57,6 +58,18 @@ router["delete"]('/:id', function (req, res) {
       if (err) console.log(err);
       res.redirect('/admin/comments');
     });
+  });
+}); //approve comment
+
+router.post('/approve-comment', function (req, res) {
+  Comment.findByIdAndUpdate(req.body.id, {
+    $set: {
+      approveComment: req.body.approveComment
+    }
+  }, function (err, result) {
+    if (err) console.log(err);
+    ;
+    res.send(result);
   });
 });
 module.exports = router;

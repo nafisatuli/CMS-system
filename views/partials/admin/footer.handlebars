@@ -38,10 +38,37 @@
     {{!--Bootstrap switch  --}}
     <script src="/js/admin/bootstrap-switch.min.js"></script>
 
+{{!-- toastr --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+
     <script>
 
         $("[name='approveComment']").bootstrapSwitch();
+        $(document).ready(()=>{
 
+           $("[name='approveComment']").on('switchChange.bootstrapSwitch',function(e,data){
+              
+            const id=$(this).attr('data-id');
+            //console.log(id);
+            //console.log(data);
+            //send ajax request
+              $.ajax({
+
+                   type:"POST",
+                   url:'/admin/comments/approve-comment', //end point
+                   data:{id:id,approveComment:data},
+                   cache:false,
+                   success:function(data){
+
+                          toastr.success(`Comment with id ${data._id} is updated`);
+
+                   }
+
+              });
+
+          });
+
+        });
 
 
     </script>
