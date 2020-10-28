@@ -504,3 +504,15 @@
          width: calc(100% - 55px);
      }
  }
+
+
+ .stylePost{
+    font-family: cursive;
+    text-align:center;
+    font-weight:bold; 
+    margin-bottom:50px;
+ }
+ .adminDash{
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-weight: bold;
+ }

@@ -20,8 +20,12 @@ body {
    height:20px;
    text-align: center;
    padding: 20px 0; }*/
-
-
+.maven{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.fontNav{
+  font-family: Tahoma;
+}
 .footer{
      position: fixed;
      left: 0;
