@@ -21,11 +21,32 @@ body {
    text-align: center;
    padding: 20px 0; }*/
 .maven{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 25px;
+  font-weight: 900;
 }
+
 .fontNav{
   font-family: Tahoma;
 }
+
+.styleNav{
+  padding-right: 30px;
+}
+
+.postTitle{
+ font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ font-weight: 900;
+}
+
+.homeTitle{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: 900;
+}
+.postBody{
+  font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 .footer{
      position: fixed;
      left: 0;

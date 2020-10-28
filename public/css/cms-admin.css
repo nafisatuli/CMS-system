@@ -512,7 +512,30 @@
     font-weight:bold; 
     margin-bottom:50px;
  }
+ 
  .adminDash{
      font-family: Verdana, Geneva, Tahoma, sans-serif;
      font-weight: bold;
  }
+
+ .editCatg{
+    font-family: cursive;
+    font-weight:bold; 
+    margin:20px 0px 50px 80px;
+ }
+
+.styleCatg{
+    width:2000px; 
+    margin:0 auto;
+ }
+
+.createCatg{
+  font-family: cursive;
+  font-weight:bold;
+}
+
+.catgName{
+    font-family: cursive;
+    font-weight:bold; 
+    text-align:center;
+}
