@@ -26,9 +26,9 @@ router.all('/*', userAuthenticated, function (req, res, next) {
 });
 router.get('/', function (req, res) {
   //need to count data for admin dashboard
-  Post.count({}).then(function (postCount) {
-    Comment.count({}).then(function (commentCount) {
-      Category.count({}).then(function (categoryCount) {
+  Post.countDocuments({}).then(function (postCount) {
+    Comment.countDocuments({}).then(function (commentCount) {
+      Category.countDocuments({}).then(function (categoryCount) {
         res.render('admin/index', {
           postCount: postCount,
           commentCount: commentCount,
