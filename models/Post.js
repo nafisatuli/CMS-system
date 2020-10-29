@@ -21,6 +21,9 @@ const PostSchema = new Schema({
             required: true
 
         },
+        slug: {
+            type: String
+        },
         status: {
             type: String,
             default: 'public'
@@ -39,9 +42,6 @@ const PostSchema = new Schema({
         date: {
             type: Date,
             default: Date.now()
-        },
-        slug: {
-            type: String
         },
         comments: [{
             //keeping all the ids of the comments in array

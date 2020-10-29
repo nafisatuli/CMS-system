@@ -169,9 +169,9 @@ router.post('/register', function (req, res) {
     });
   }
 });
-router.get('/post/:id', function (req, res) {
+router.get('/post/:slug', function (req, res) {
   Post.findOne({
-    _id: req.params.id
+    slug: req.params.slug
   }).populate({
     path: 'comments',
     match: {
