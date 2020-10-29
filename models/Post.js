@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+//slug for url
+const URLSlugs = require('mongoose-url-slugs');
+
+
 const PostSchema = new Schema({
 
         //user for post
@@ -36,6 +40,9 @@ const PostSchema = new Schema({
             type: Date,
             default: Date.now()
         },
+        slug: {
+            type: String
+        },
         comments: [{
             //keeping all the ids of the comments in array
             type: Schema.Types.ObjectId,
@@ -47,5 +54,12 @@ const PostSchema = new Schema({
     {
         usePushEach: true
     });
+
+//mongoose plugin
+//1st parameter is where we need to pull data form
+//2nd parameter is where data is going to modify
+PostSchema.plugin(URLSlugs('title', {
+    field: 'slug'
+}));
 
 module.exports = mongoose.model('posts', PostSchema);

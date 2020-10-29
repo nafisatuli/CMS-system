@@ -42,6 +42,7 @@ body {
 .homeTitle{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 900;
+  color: rgb(167, 34, 34);
 }
 .postBody{
   font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
