@@ -17,19 +17,38 @@ router.all('/*', (req, res, next) => {
 
 router.get('/', (req, res) => {
 
+    //new feature for per page
+    const perPage = 10;
+    const page = req.query.page || 1;
+
+
     //find all post
-    Post.find({}).then(posts => {
+    Post.find({})
 
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .then(posts => {
+            Post.countDocuments().then(postCount => {
 
-        Category.find({}).then(categories => {
-            res.render('home/index', {
-                posts: posts,
-                categories: categories
+                Category.find({}).then(categories => {
+
+                    res.render('home/index', {
+
+                        posts: posts,
+                        categories: categories,
+                        current: parseInt(page),
+                        pages: Math.ceil(postCount / perPage)
+
+                    });
+                });
+
             });
+
         });
-    });
 
 });
+
+
 
 
 

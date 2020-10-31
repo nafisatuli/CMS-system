@@ -48,14 +48,16 @@ app.use(express["static"](path.join(__dirname, 'public'))); //for using static f
 
 var _require3 = require('./helpers/handlebars-helpers'),
     select = _require3.select,
-    generateDate = _require3.generateDate; //engine
+    generateDate = _require3.generateDate,
+    paginate = _require3.paginate; //engine
 
 
 app.engine('handlebars', expressHbrs({
   defaultLayout: 'home',
   helpers: {
     select: select,
-    generateDate: generateDate
+    generateDate: generateDate,
+    paginate: paginate
   },
   handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));

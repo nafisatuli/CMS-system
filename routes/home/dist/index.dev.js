@@ -21,12 +21,19 @@ router.all('/*', function (req, res, next) {
   next();
 });
 router.get('/', function (req, res) {
-  //find all post
-  Post.find({}).then(function (posts) {
-    Category.find({}).then(function (categories) {
-      res.render('home/index', {
-        posts: posts,
-        categories: categories
+  //new feature for per page
+  var perPage = 10;
+  var page = req.query.page || 1; //find all post
+
+  Post.find({}).skip(perPage * page - perPage).limit(perPage).then(function (posts) {
+    Post.countDocuments().then(function (postCount) {
+      Category.find({}).then(function (categories) {
+        res.render('home/index', {
+          posts: posts,
+          categories: categories,
+          current: parseInt(page),
+          pages: Math.ceil(postCount / perPage)
+        });
       });
     });
   });

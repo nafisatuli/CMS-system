@@ -40,14 +40,16 @@ app.use(express.static(path.join(__dirname, 'public'))); //for using static file
 //register handlebars-helpers function
 const {
     select,
-    generateDate
+    generateDate,
+    paginate
 } = require('./helpers/handlebars-helpers');
 //engine
 app.engine('handlebars', expressHbrs({
     defaultLayout: 'home',
     helpers: {
         select: select,
-        generateDate: generateDate
+        generateDate: generateDate,
+        paginate: paginate
     },
     handlebars: allowInsecurePrototypeAccess(Handlebars),
 }));
