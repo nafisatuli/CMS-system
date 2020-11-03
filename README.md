@@ -8,9 +8,11 @@ I was thinking about a content management system where everyone who connected wi
 
 1. Login System.
 2. Registration System.
-3. Users who are not registered, they can see posts only.
-4. Registered users can post content and also can comment on other’s posts where comments are allowed.
-5. Registered users can edit and update their posts. They also can delete their comments.
+3. A general dashboard in the admin section.
+4. Users who are not registered, they can see posts, comments, and about sections.
+5. Registered users can post content, edit and delete their own posts.
+6. Registered users can comment on other’s posts where comments are allowed.
+7. Registered users can delete or change the status of their comments.
 
 ### Platform: Web
 
