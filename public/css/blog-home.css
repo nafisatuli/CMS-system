@@ -34,16 +34,40 @@ body {
   padding-right: 30px;
 }
 
-.postTitle{
- font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
- font-weight: 900;
+
+.cardCat{
+  margin-top: 100px;
+}
+
+.catHeadline{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: 700;
 }
 
 .homeTitle{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 900;
-  color: rgb(167, 34, 34);
+  color: rgb(63, 58, 58);
+  text-align: center;
+  text-shadow: 2px 2px 5px rgb(105, 102, 102);
 }
+
+.homeTitle:hover { 
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 
+  0 3px 0 #ccc, 0 4px 0 #ccc, 
+  0 5px 0 #ccc, 0 6px 0 #ccc, 
+  0 7px 0 #ccc, 0 8px 0 #ccc, 
+  0 9px 0 #ccc, 0 10px 0 #ccc, 
+  0 11px 0 #ccc, 0 12px 0 #ccc, 
+  0 20px 30px rgba(0, 0, 0, 0.5); 
+} 
+
+.postTitle{
+ font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ font-weight: 900;
+}
+
+
 .postBody{
   font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
@@ -58,4 +82,82 @@ body {
      line-height: 0px;
      text-align: center;
      padding: 20px 0;
+}
+
+
+.aboutHeadline{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: rgb(73, 70, 70);
+  font-weight: 900;
+  margin-top: 100px;
+  text-align: center;
+  font-size: 60px;
+  line-height:1em;
+  animation-name: headline;
+  animation-duration: 6s;
+  text-shadow: 2px 2px 5px rgb(105, 102, 102);
+}
+
+.aboutHeadline:hover { 
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 
+  0 3px 0 #ccc, 0 4px 0 #ccc, 
+  0 5px 0 #ccc, 0 6px 0 #ccc, 
+  0 7px 0 #ccc, 0 8px 0 #ccc, 
+  0 9px 0 #ccc, 0 10px 0 #ccc, 
+  0 11px 0 #ccc, 0 12px 0 #ccc, 
+  0 20px 30px rgba(0, 0, 0, 0.5); 
+} 
+
+
+@keyframes headline {
+  0% {color: rgb(29, 10, 10);}
+  50%{color: rgb(155, 135, 135);}
+  100% {color:  rgb(73, 70, 70);}
+}
+
+
+.about{
+  margin-top: 100px;
+}
+
+.half-width {
+  width: 40%;
+  float: left;
+  margin-left: 5%;
+  padding-left: 2%;
+}
+
+
+.half-width img {
+  width: 100%;
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
+}
+
+.rotate{
+  top: 50%;
+  left: 50%;
+  -webkit-animation:spin 2s linear;
+  -moz-animation:spin 2s linear;
+  animation:spin 2s linear;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(360deg); } }
+
+.aboutPara{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: 900;
+  color: rgb(29, 10, 10);
+  font-size: medium;
+
+  animation-name: aboutPara;
+  animation-duration: 4s;
+}
+
+@keyframes aboutPara{
+  0% {color: rgb(29, 10, 10);}
+  50%{color: rgb(155, 135, 135);}
+  100% {color:  rgb(73, 70, 70);}
 }

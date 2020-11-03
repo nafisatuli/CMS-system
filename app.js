@@ -37,6 +37,7 @@ mongoose.connect(mongoDbUrl, {
 
 app.use(express.static(path.join(__dirname, 'public'))); //for using static files
 
+
 //register handlebars-helpers function
 const {
     select,

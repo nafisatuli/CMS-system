@@ -229,9 +229,6 @@ router.post('/register', (req, res) => {
 });
 
 
-
-
-
 router.get('/post/:slug', (req, res) => {
 
     Post.findOne({
@@ -260,6 +257,5 @@ router.get('/post/:slug', (req, res) => {
 
         })
 });
-
 
 module.exports = router;

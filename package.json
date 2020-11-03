@@ -26,6 +26,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.10.7",
     "mongoose-url-slugs": "^1.0.2",
+    "nodemailer": "^6.4.14",
     "nodemon": "^2.0.5",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
