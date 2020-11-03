@@ -42,25 +42,51 @@ body {
 .catHeadline{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 700;
+  color: rgb(63, 58, 58);
+  text-shadow: 2px 2px 5px rgb(105, 102, 102);
 }
+.catHeadline:hover{ 
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 
+  0 2px 0 #ccc, 0 3px 0 #ccc, 
+  0 4px 0 #ccc, 0 5px 0 #ccc, 
+  0 6px 0 #ccc, 0 7px 0 #ccc, 
+  0 8px 0 #ccc, 0 9px 0 #ccc, 
+  0 10px 0 #ccc, 0 11px 0 #ccc, 
+  0 10px 20px rgba(0, 0, 0, 0.5); 
+} 
+
+
+
 
 .homeTitle{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 900;
-  color: rgb(63, 58, 58);
+  color: rgb(51, 26, 26);
   text-align: center;
   text-shadow: 2px 2px 5px rgb(105, 102, 102);
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgb(8, 6, 6), rgb(78, 44, 44),rgb(8, 6, 6));
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
 }
 
-.homeTitle:hover { 
-  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 
-  0 3px 0 #ccc, 0 4px 0 #ccc, 
-  0 5px 0 #ccc, 0 6px 0 #ccc, 
-  0 7px 0 #ccc, 0 8px 0 #ccc, 
-  0 9px 0 #ccc, 0 10px 0 #ccc, 
-  0 11px 0 #ccc, 0 12px 0 #ccc, 
-  0 20px 30px rgba(0, 0, 0, 0.5); 
-} 
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
 
 .postTitle{
  font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -71,19 +97,6 @@ body {
 .postBody{
   font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-
-.footer{
-     position: fixed;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     width: 100%;
-     height: 20px;
-     line-height: 0px;
-     text-align: center;
-     padding: 20px 0;
-}
-
 
 .aboutHeadline{
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -160,4 +173,19 @@ body {
   0% {color: rgb(29, 10, 10);}
   50%{color: rgb(155, 135, 135);}
   100% {color:  rgb(73, 70, 70);}
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  line-height: 0px;
+  text-align: center;
+  padding: 20px 0;
+}
+.textFooter{
+  font-size: small;
 }
