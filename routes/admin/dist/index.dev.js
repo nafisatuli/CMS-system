@@ -1,5 +1,13 @@
 "use strict";
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var express = require('express');
 
 var _require = require('../home'),
@@ -25,18 +33,32 @@ router.all('/*', userAuthenticated, function (req, res, next) {
   next();
 });
 router.get('/', function (req, res) {
-  //need to count data for admin dashboard
-  Post.countDocuments({}).then(function (postCount) {
-    Comment.countDocuments({}).then(function (commentCount) {
-      Category.countDocuments({}).then(function (categoryCount) {
-        res.render('admin/index', {
-          postCount: postCount,
-          commentCount: commentCount,
-          categoryCount: categoryCount
-        });
-      });
+  //create array to contain promises
+  var promises = [Post.countDocuments().exec(), Category.countDocuments().exec(), Comment.countDocuments().exec()];
+  Promise.all(promises).then(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 3),
+        postCount = _ref2[0],
+        categoryCount = _ref2[1],
+        commentCount = _ref2[2];
+
+    res.render('admin/index', {
+      postCount: postCount,
+      categoryCount: categoryCount,
+      commentCount: commentCount
     });
-  }); //res.render('admin/index');
+  }); //need to count data for admin dashboard
+  // Post.countDocuments({}).then(postCount => {
+  //     Comment.countDocuments({}).then(commentCount => {
+  //         Category.countDocuments({}).then(categoryCount => {
+  //             res.render('admin/index', {
+  //                 postCount: postCount,
+  //                 commentCount: commentCount,
+  //                 categoryCount: categoryCount
+  //             });
+  //         });
+  //     });
+  // });
+  //res.render('admin/index');
 }); //here we dont have to get /admin bcz in the middleware we already told this
 //if here another routes client so it will be admin/client already
 //for dummy data creation

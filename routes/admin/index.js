@@ -22,20 +22,37 @@ router.all('/*', userAuthenticated, (req, res, next) => {
 
 router.get('/', (req, res) => {
 
-    //need to count data for admin dashboard
-    Post.countDocuments({}).then(postCount => {
-        Comment.countDocuments({}).then(commentCount => {
+    //create array to contain promises
+    const promises = [
+        Post.countDocuments().exec(),
+        Category.countDocuments().exec(),
+        Comment.countDocuments().exec()
+    ];
 
-            Category.countDocuments({}).then(categoryCount => {
+    Promise.all(promises).then(([postCount, categoryCount, commentCount]) => {
 
-                res.render('admin/index', {
-                    postCount: postCount,
-                    commentCount: commentCount,
-                    categoryCount: categoryCount
-                });
-            });
+        res.render('admin/index', {
+            postCount: postCount,
+            categoryCount: categoryCount,
+            commentCount: commentCount
         });
+
     });
+
+
+    //need to count data for admin dashboard
+    // Post.countDocuments({}).then(postCount => {
+    //     Comment.countDocuments({}).then(commentCount => {
+    //         Category.countDocuments({}).then(categoryCount => {
+
+    //             res.render('admin/index', {
+    //                 postCount: postCount,
+    //                 commentCount: commentCount,
+    //                 categoryCount: categoryCount
+    //             });
+    //         });
+    //     });
+    // });
     //res.render('admin/index');
 });
 
