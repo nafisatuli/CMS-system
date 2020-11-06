@@ -38,7 +38,7 @@ router.post('/', function (req, res) {
       //save the comment
       newComment.save().then(function (savedComment) {
         req.flash('success_message', 'Your comment will be reviewed.');
-        res.redirect("/post/".concat(post.id));
+        res.redirect("/post/".concat(post.slug));
       });
     });
   });
