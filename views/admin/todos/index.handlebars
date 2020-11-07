@@ -1,0 +1,44 @@
+<div class="row" class="styleCatg">
+    <div class="col-sm-4">
+        <h1 class="todoTitle">Add Your Todo Item</h1>
+        <form action="/admin/todos/create" method="post">
+            <div class="form group">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Enter Your Todo" class="form-control">
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: 20px;">Add Todo</button>
+        </form>
+    </div>
+</div>
+<br>
+<hr>
+<div class="row">
+    <div class="col-sm-8">
+        <h1 class="todoTitle">Todo List</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Owner</th>
+                    <th>Todo Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each todos}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{user.firstName}} {{user.lastName}}</td>
+                    <td>{{name}}</td>
+                    <td><a href="/admin/todos/edit/{{id}}" class="btn btn-info">Edit</a></td>
+                    <td>
+                        <form action="/admin/todos/{{id}}?_method=DELETE" method="post">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

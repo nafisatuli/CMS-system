@@ -1,0 +1,12 @@
+<h1 class="editCatg">Edit Todo</h1>
+<div class="row" class="styleCatg">
+    <div class="col-sm-4">
+       <form action="/admin/todos/edit/{{todo.id}}?_method=PUT" method="post">
+             <div class="form group">
+                <label for="name">Name</label>
+                <input value="{{todo.name}}" type="text" name="name" placeholder="Enter Title" class="form-control">
+            </div>
+         <button class="btn btn-primary" style="margin-top:20px;">Update Todo</button>
+       </form>
+    </div>
+</div>

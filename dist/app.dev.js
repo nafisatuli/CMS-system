@@ -101,7 +101,9 @@ var posts = require('./routes/admin/posts');
 
 var categories = require('./routes/admin/categories');
 
-var comments = require('./routes/admin/comments'); //Use Routes
+var comments = require('./routes/admin/comments');
+
+var todos = require('./routes/admin/todos'); //Use Routes
 //let application know about main.js router by Middleware
 
 
@@ -110,7 +112,8 @@ app.use('/', home); //all functionality going to be here
 app.use('/admin', admin);
 app.use('/admin/posts', posts);
 app.use('/admin/categories', categories);
-app.use('/admin/comments', comments); //listen to the port
+app.use('/admin/comments', comments);
+app.use('/admin/todos', todos); //listen to the port
 
 app.listen(4500, function () {
   console.log("listening on port 4500");
