@@ -36,9 +36,7 @@ module.exports = {
         for (; i <= (Number(options.hash.current) + 4) && i <= options.hash.pages; i++) {
 
             if (i === options.hash.current) {
-
                 output += `<li class="page-item active"><a class="page-link">${i}</a></li>`;
-
 
             } else {
 
