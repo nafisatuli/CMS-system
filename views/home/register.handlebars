@@ -1,36 +1,36 @@
-<div class="card card-register mx-auto mt-5">
-    <div class="card-header">Register an Account</div>
+<div class="card card-register mx-auto loginCard">
+    <div class="card-header cardHead">Register an Account</div>
     <div class="card-body">
         <form action="/register" method="post">
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-md-6">
-                        <label for="exampleInputName">First name</label>
+                        <label for="exampleInputName" class="fontS">First name</label>
                         <input required value="{{firstName}}" name="firstName" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
                     </div>
                     <div class="col-md-6">
-                        <label for="exampleInputLastName">Last name</label>
+                        <label for="exampleInputLastName" class="fontS">Last name</label>
                         <input required value="{{lastName}}" name="lastName" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+                <label for="exampleInputEmail1" class="fontS">Email address</label>
                 <input required value="{{email}}" name="email" class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-md-6">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="exampleInputPassword1" class="fontS">Password</label>
                         <input required name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
                     </div>
                     <div class="col-md-6">
-                        <label for="exampleConfirmPassword">Confirm password</label>
+                        <label for="exampleConfirmPassword" class="fontS">Confirm password</label>
                         <input required name="passwordConfirm" class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block regBtn">Register</button>
         </form>
     </div>
 </div>

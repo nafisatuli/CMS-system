@@ -57,10 +57,6 @@ router.get('/my-posts', (req, res) => {
         });
 });
 
-
-
-
-
 router.get('/create', (req, res) => {
 
     Category.find({}).then(categories => {

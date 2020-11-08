@@ -1,54 +1,54 @@
 <div class="row" class="styleCatg">
-     <div class="col-sm-4">
-       <h1 class="createCatg">Create Category</h1>
-       <form action="/admin/categories/create" method="post">
-             <div class="form group">
+    <div class="col-sm-4">
+        <h1 class="createCatg">Create Category</h1>
+        <form action="/admin/categories/create" method="post">
+            <div class="form group">
                 <label for="name">Name</label>
                 <input type="text" name="name" placeholder="Enter Title" class="form-control">
             </div>
 
-         <button class="btn btn-primary" style="margin-top: 20px;">Create Category</button>
-       </form>
+            <button class="btn btn-primary" style="margin-top: 20px;">Create Category</button>
+        </form>
     </div>
 
 </div>
 <br>
 
- <hr>
+<hr>
 <div class="row">
- 
-       <div class="col-sm-8">
+
+    <div class="col-sm-8">
         <h1 class="catgName">Categories Name</h1>
         <table class="table">
 
-             <thead>
-                 <tr>
-                     <th>Id</th>
-                     <th>Name</th>
-                 </tr>
-             </thead>
-              <tbody>
-               {{#each categories}}
-                 
-
-                  <tr>
-                      <td>{{id}}</td>
-                      <td>{{name}}</td>
-                      <td><a href="/admin/categories/edit/{{id}}" class="btn btn-info">Edit</a></td>
-                      <td>
-                          <form action="/admin/categories/{{id}}?_method=DELETE" method="post">
-                             
-                               <button class="btn btn-danger">Delete</button>
-                          
-                          </form>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each categories}}
 
 
-                      </td>
-                  </tr>
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td><a href="/admin/categories/edit/{{id}}" class="btn btn-info">Edit</a></td>
+                    <td>
+                        <form action="/admin/categories/{{id}}?_method=DELETE" method="post">
+
+                            <button class="btn btn-danger">Delete</button>
+
+                        </form>
+
+
+                    </td>
+                </tr>
 
                 {{/each}}
 
-              </tbody>
+            </tbody>
 
 
 
@@ -60,7 +60,3 @@
     </div>
 
 </div>
-   
-
-  
-

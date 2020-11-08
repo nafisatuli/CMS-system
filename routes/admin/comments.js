@@ -3,14 +3,12 @@ const router = express.Router();
 const Comment = require('../../models/Comment');
 const Post = require('../../models/Post');
 
-
 router.all('/*', (req, res, next) => {
 
     req.app.locals.layout = 'admin';
     next();
 
 });
-
 
 router.get('/', (req, res) => {
 
@@ -27,9 +25,6 @@ router.get('/', (req, res) => {
 
     // res.render('admin/comments');
 });
-
-
-
 
 router.post('/', (req, res) => {
 
@@ -99,6 +94,5 @@ router.post('/approve-comment', (req, res) => {
         res.send(result);
     });
 });
-
 
 module.exports = router;

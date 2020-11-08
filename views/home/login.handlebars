@@ -1,17 +1,17 @@
-<div class='card card-login mx-auto mt-5'>
-  <div class='card-header'>
-    Login
+<div class='card card-login mx-auto loginCard'>
+  <div class='card-header cardHead'>
+    Login to Your Account
   </div>
 
   <div class='card-body'>
     <form action='/login' method='post'>
       <div class='form-group'>
-        <label for='exampleInputEmail1'>
+        <label for='exampleInputEmail1' class="fontS">
           Email address
         </label>
         <input
           name='email'
-          class='form-control'
+          class='form-control email'
           id='exampleInputEmail1'
           type='email'
           aria-describedby='emailHelp'
@@ -20,7 +20,7 @@
         />
       </div>
       <div class='form-group'>
-        <label for='exampleInputPassword1'>
+        <label for='exampleInputPassword1' class="fontS">
           Password
         </label>
         <input
@@ -40,15 +40,15 @@
           </label>
         </div>
       </div> --}}
-      <button type='submit' class='btn btn-primary btn-block'>
+      <button type='submit' class='btn btn-primary btn-block loginBtn'>
         Login
       </button>
     </form>
     <div class='text-center'>
-      <a class='d-block small mt-3' href='/register'>
+      <a class='d-block medium mt-3 loginLink' href='/register'>
         Register an Account
       </a>
-      <a class='d-block small' href='/'>
+      <a class='d-block medium loginLink' href='/'>
         Home Page?
       </a>
     </div>

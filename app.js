@@ -25,7 +25,6 @@ const flash = require('connect-flash');
 
 mongoose.Promise = global.Promise;
 
-
 //mongoose connect
 mongoose.connect(mongoDbUrl, {
     useNewUrlParser: true,
@@ -36,7 +35,6 @@ mongoose.connect(mongoDbUrl, {
 
 
 app.use(express.static(path.join(__dirname, 'public'))); //for using static files
-
 
 //register handlebars-helpers function
 const {
@@ -59,7 +57,6 @@ app.set('view engine', 'handlebars');
 //Upload Middleware
 app.use(upload());
 
-
 //Body Parser
 app.use(bodyParser.urlencoded({
     extended: true
@@ -80,7 +77,6 @@ app.use(flash());
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 //set up local variables using middleware for handlebars
 app.use((req, res, next) => {
@@ -113,7 +109,6 @@ app.use('/admin/posts', posts);
 app.use('/admin/categories', categories);
 app.use('/admin/comments', comments);
 app.use('/admin/todos', todos);
-
 
 //listen to the port
 app.listen(4500, () => {

@@ -11,7 +11,6 @@ router.all('/*', userAuthenticated, (req, res, next) => {
     next();
 });
 
-
 router.get('/', (req, res) => {
 
     Category.find({}).then(categories => {
@@ -32,7 +31,6 @@ router.post('/create', (req, res) => {
         res.redirect('/admin/categories');
     });
 });
-
 
 router.get('/edit/:id', (req, res) => {
 
@@ -59,8 +57,6 @@ router.put('/edit/:id', (req, res) => {
             res.redirect('/admin/categories');
 
         });
-
-
 
     });
 });

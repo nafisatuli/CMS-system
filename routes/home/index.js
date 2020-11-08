@@ -8,19 +8,16 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'home';
     next();
 });
-
 
 router.get('/', (req, res) => {
 
     //new feature for per page
     const perPage = 10;
     const page = req.query.page || 1;
-
 
     //find all post
     Post.find({})
@@ -48,10 +45,6 @@ router.get('/', (req, res) => {
 
 });
 
-
-
-
-
 router.get('/about', (req, res) => {
     res.render('home/about');
 });
@@ -60,8 +53,6 @@ router.get('/about', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('home/login');
 });
-
-
 
 passport.use(new LocalStrategy({
     usernameField: 'email'
@@ -102,25 +93,15 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-
-
-
 router.post('/login', (req, res, next) => {
-
-
-
     //2nd parameter will be an object with some properties and values
 
     passport.authenticate('local', {
-
         successRedirect: '/admin',
         failureRedirect: '/login',
         failureFlash: true
 
-
     })(req, res, next);
-
-
 });
 
 //logout
@@ -129,14 +110,11 @@ router.get('/logout', function (req, res) {
     res.redirect('/login');
 });
 
-
-
 router.get('/register', (req, res) => {
     res.render('home/register');
 });
 
 //for user registration
-
 router.post('/register', (req, res) => {
 
     //validation in server
@@ -221,13 +199,8 @@ router.post('/register', (req, res) => {
                 res.redirect('/login');
             }
         });
-
-
-
     }
-
 });
-
 
 router.get('/post/:slug', (req, res) => {
 

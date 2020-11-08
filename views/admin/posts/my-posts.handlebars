@@ -26,41 +26,41 @@
   </thead>
   <tbody>
     {{#each posts}}
-      <tr>
-        <td>
-          {{id}}
-        </td>
-        <td><img height="50px" class="img-responsive" src="/uploads/{{file}}" alt=""></td>
-        <td>
-          {{title}}
-        </td>
-        <td>
-          {{status}}
-        </td>
-        <td>{{category.name}}</td>
-        <td>
-          {{allowComments}}
-        </td>
-        <td>
-          {{generateDate date 'MMMM Do YYYY'}}
-        </td>
-        <td><a href="/post/{{slug}}">View</a></td>
-        <td>
-          <a href="/admin/posts/edit/{{id}}" class='btn btn-info'>
-            Edit
-          </a>
-        </td>
-         <td>
-          
-             <form action="/admin/posts/{{id}}?_method=DELETE" method="post">
+    <tr>
+      <td>
+        {{id}}
+      </td>
+      <td><img height="50px" class="img-responsive" src="/uploads/{{file}}" alt=""></td>
+      <td>
+        {{title}}
+      </td>
+      <td>
+        {{status}}
+      </td>
+      <td>{{category.name}}</td>
+      <td>
+        {{allowComments}}
+      </td>
+      <td>
+        {{generateDate date 'MMMM Do YYYY'}}
+      </td>
+      <td><a href="/post/{{slug}}">View</a></td>
+      <td>
+        <a href="/admin/posts/edit/{{id}}" class='btn btn-info'>
+          Edit
+        </a>
+      </td>
+      <td>
 
-                <button type="submit" class="btn btn-danger">Delete</button>
-             </form>
+        <form action="/admin/posts/{{id}}?_method=DELETE" method="post">
+
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
 
 
 
-        </td>
-      </tr>
+      </td>
+    </tr>
     {{/each}}
   </tbody>
 </table>
