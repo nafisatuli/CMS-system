@@ -248,6 +248,12 @@ figure::after {
   font-size: 20px;
 }
 
+.showPass {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .loginBtn {
   width: 200px;
   text-align: center;

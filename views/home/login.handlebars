@@ -9,28 +9,18 @@
         <label for='exampleInputEmail1' class="fontS">
           Email address
         </label>
-        <input
-          name='email'
-          class='form-control email'
-          id='exampleInputEmail1'
-          type='email'
-          aria-describedby='emailHelp'
-          placeholder='Enter email'
-          required
-        />
+        <input name='email' class='form-control email' id='exampleInputEmail1' type='email' aria-describedby='emailHelp'
+          placeholder='Enter email' required />
       </div>
       <div class='form-group'>
         <label for='exampleInputPassword1' class="fontS">
           Password
         </label>
-        <input
-          name='password'
-          class='form-control'
-          id='exampleInputPassword1'
-          type='password'
-          placeholder='Password'
-          required
-        />
+        <input name='password' class='form-control' id='exampleInputPassword1' type='password' placeholder='Password'
+          required />
+
+        <input type="checkbox" onclick="Toggle()">
+        <label class="showPass">Show Password</label>
       </div>
       {{!-- <div class='form-group'>
         <div class='form-check'>
