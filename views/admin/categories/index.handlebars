@@ -29,20 +29,14 @@
             </thead>
             <tbody>
                 {{#each categories}}
-
-
                 <tr>
                     <td>{{id}}</td>
                     <td>{{name}}</td>
                     <td><a href="/admin/categories/edit/{{id}}" class="btn btn-info">Edit</a></td>
                     <td>
-                        <form action="/admin/categories/{{id}}?_method=DELETE" method="post">
-
+                        <form action="/admin/categories/{{id}}?_method=DELETE" method="post">  
                             <button class="btn btn-danger">Delete</button>
-
                         </form>
-
-
                     </td>
                 </tr>
 
@@ -50,12 +44,7 @@
 
             </tbody>
 
-
-
         </table>
-
-
-
 
     </div>
 

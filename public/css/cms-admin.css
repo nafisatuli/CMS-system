@@ -511,6 +511,9 @@
      text-align: center;
      font-weight: bold;
      margin-bottom: 50px;
+     text-align: center;
+     color: rgb(48, 46, 46);
+     text-shadow: 2px 2px 5px rgb(105, 102, 102);
  }
 
  .adminDash {
@@ -522,6 +525,8 @@
      font-family: cursive;
      font-weight: bold;
      margin: 20px 0px 50px 80px;
+     color: rgb(48, 46, 46);
+     text-shadow: 2px 2px 5px rgb(105, 102, 102);
  }
 
  .styleCatg {
@@ -532,16 +537,22 @@
  .createCatg {
      font-family: cursive;
      font-weight: bold;
+     color: rgb(48, 46, 46);
+     text-shadow: 2px 2px 5px rgb(105, 102, 102);
  }
 
  .catgName {
      font-family: cursive;
      font-weight: bold;
      text-align: center;
+     color: rgb(48, 46, 46);
+     text-shadow: 2px 2px 5px rgb(105, 102, 102);
  }
 
  .todoTitle {
      font-family: cursive;
      font-weight: bold;
      text-align: center;
+     color: rgb(48, 46, 46);
+     text-shadow: 2px 2px 5px rgb(105, 102, 102);
  }

@@ -102,7 +102,7 @@ router.post('/create', function (req, res) {
     var newPost = new Post({
       user: req.user.id,
       title: req.body.title,
-      status: req.body.status,
+      //status: req.body.status,
       allowComments: _allowComments,
       body: req.body.body,
       file: _filename,
@@ -143,8 +143,8 @@ router.put('/edit/:id', function (req, res) {
     }
 
     post.user = req.user.id;
-    post.title = req.body.title;
-    post.status = req.body.status;
+    post.title = req.body.title; // post.status = req.body.status;
+
     post.allowComments = allowComments;
     post.body = req.body.body;
     post.category = req.body.category;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,29 +11,33 @@
   <!-- Bootstrap core CSS-->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
- 
+  <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
   <!-- Custom styles for this template-->
   <link href="/css/cms-admin.css" rel="stylesheet">
 
   <link href="/css/bootstrap-switch.min.css" rel="stylesheet">
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+    crossorigin="anonymous" />
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand adminDash" href="/">Home</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-        {{!-- Side Nav --}}
+      {{!-- Side Nav --}}
 
-        {{>admin/admin-side-nav}}
-        
+      {{>admin/admin-side-nav}}
+
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
@@ -132,7 +137,8 @@
         </li> --}}
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-              <i class="fa fa-user">{{#if user}}{{user.firstName}}{{/if}}</i> <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            <i class="fa fa-user">{{#if user}}{{user.firstName}}{{/if}}</i>
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
@@ -141,19 +147,19 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-       
-             {{>home/form-msgs}}
-      
-             {{{body}}}
+
+          {{>home/form-msgs}}
+
+          {{{body}}}
 
         </div>
       </div>
     </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
-    
-</div>
-{{>admin/footer}}
+
+  </div>
+  {{>admin/footer}}
 
 </body>
 

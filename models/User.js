@@ -25,7 +25,6 @@ const UserSchema = new Schema({
 
 });
 
-
 UserSchema.methods.testMethod = function () {
     //console.log('using schema methods');
 };

@@ -21,28 +21,20 @@ router.get('/', (req, res) => {
 
     //find all post
     Post.find({})
-
         .skip((perPage * page) - perPage)
         .limit(perPage)
         .then(posts => {
             Post.countDocuments().then(postCount => {
-
                 Category.find({}).then(categories => {
-
                     res.render('home/index', {
-
                         posts: posts,
                         categories: categories,
                         current: parseInt(page),
                         pages: Math.ceil(postCount / perPage)
-
                     });
                 });
-
             });
-
         });
-
 });
 
 router.get('/about', (req, res) => {
@@ -61,12 +53,9 @@ passport.use(new LocalStrategy({
     User.findOne({
         email: email
     }).then(user => {
-
         if (!user) return done(null, false, {
             message: "No user found"
         });
-
-
         bcrypt.compare(password, user.password, (err, matched) => {
             if (err) throw err;
             if (matched) {
@@ -77,10 +66,8 @@ passport.use(new LocalStrategy({
                 });
             }
         });
-
         // user.testMethod();
     });
-
 }));
 
 passport.serializeUser(function (user, done) {
@@ -95,12 +82,10 @@ passport.deserializeUser(function (id, done) {
 
 router.post('/login', (req, res, next) => {
     //2nd parameter will be an object with some properties and values
-
     passport.authenticate('local', {
         successRedirect: '/admin',
         failureRedirect: '/login',
         failureFlash: true
-
     })(req, res, next);
 });
 
@@ -116,7 +101,6 @@ router.get('/register', (req, res) => {
 
 //for user registration
 router.post('/register', (req, res) => {
-
     //validation in server
     let errors = [];
     if (!req.body.firstName) {
@@ -144,13 +128,11 @@ router.post('/register', (req, res) => {
             message: 'please confirm password'
         });
     }
-
     if (req.body.password !== req.body.passwordConfirm) {
         errors.push({
             message: 'Password did not match'
         });
     }
-
     if (req.body.password.length < 6) {
         errors.push({
             message: 'Password must contain at least 6 numbers or characters'
@@ -164,31 +146,23 @@ router.post('/register', (req, res) => {
             email: req.body.email
         });
     } else {
-
         //find user already exist
         User.findOne({
             email: req.body.email
         }).then(user => {
-
-
             if (!user) {
                 const newUser = new User({
-
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     email: req.body.email,
                     password: req.body.password,
-
                 });
                 //salt is a random string of characters
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
-
                         newUser.password = hash;
                         //console.log(hash);
-
                         newUser.save().then(savedUser => {
-
                             req.flash('success_message', 'You are now registered, please login');
                             res.redirect('/login');
                         });
@@ -203,7 +177,6 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/post/:slug', (req, res) => {
-
     Post.findOne({
             slug: req.params.slug
         })

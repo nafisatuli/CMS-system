@@ -66,8 +66,8 @@ router.get('/', function (req, res) {
 router.post('/generate-fake-posts', function (req, res) {
   for (var i = 0; i < req.body.amount; i++) {
     var post = new Post();
-    post.title = faker.name.title();
-    post.status = 'public';
+    post.title = faker.name.title(); //post.status = 'public';
+
     post.allowComments = faker.random["boolean"]();
     post.body = faker.lorem.sentence();
     post.slug = faker.name.title();

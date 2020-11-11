@@ -17,8 +17,6 @@ const {
     userAuthenticated
 } = require('../../helpers/authentication');
 
-
-
 router.all('/*', userAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'admin';
     next();
@@ -97,35 +95,29 @@ router.post('/create', (req, res) => {
             });
 
         }
-
         let allowComments = true;
         if (req.body.allowComments) {
             allowComments = true;
         } else {
             allowComments = false;
         }
-
         const newPost = new Post({
             user: req.user.id,
             title: req.body.title,
-            status: req.body.status,
+            //status: req.body.status,
             allowComments: allowComments,
             body: req.body.body,
             file: filename,
             category: req.body.category
         });
         newPost.save().then(savedPost => {
-
-
             req.flash('success_message', `Post ${savedPost.title} was created successfully`);
             res.redirect('/admin/posts');
         }).catch(error => {
             console.log(error, "could not save");
         });
     }
-
 });
-
 
 //Edit
 router.get('/edit/:id', (req, res) => {
@@ -145,7 +137,6 @@ router.get('/edit/:id', (req, res) => {
 
 });
 
-
 //updating post
 router.put('/edit/:id', (req, res) => {
 
@@ -161,7 +152,7 @@ router.put('/edit/:id', (req, res) => {
 
             post.user = req.user.id;
             post.title = req.body.title;
-            post.status = req.body.status;
+            // post.status = req.body.status;
             post.allowComments = allowComments;
             post.body = req.body.body;
             post.category = req.body.category;
@@ -177,7 +168,6 @@ router.put('/edit/:id', (req, res) => {
             }
 
             post.save().then(updatedPost => {
-
                 req.flash('success_message', 'Post was successfully updated');
                 res.redirect('/admin/posts/my-posts');
             }).catch(error => {
@@ -214,7 +204,6 @@ router.put('/edit/:id', (req, res) => {
 // });
 
 router.delete('/:id', (req, res) => {
-
 
     Post.findByIdAndDelete(req.params.id)
         .then((post) => {

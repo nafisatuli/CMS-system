@@ -12,7 +12,6 @@ router.all('/*', userAuthenticated, (req, res, next) => {
 });
 
 router.get('/', (req, res) => {
-
     Todo.find({
             user: req.user.id
         }).populate('user')
@@ -21,11 +20,9 @@ router.get('/', (req, res) => {
                 todos: todos
             });
         });
-
 });
 
 router.post('/create', (req, res) => {
-
     const newTodo = Todo({
         user: req.user.id,
         name: req.body.name
@@ -37,11 +34,9 @@ router.post('/create', (req, res) => {
 
 
 router.get('/edit/:id', (req, res) => {
-
     Todo.findOne({
         _id: req.params.id
     }).then(todo => {
-
         res.render('admin/todos/edit', {
             todo: todo
         });
@@ -49,24 +44,18 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.put('/edit/:id', (req, res) => {
-
     Todo.findOne({
         _id: req.params.id
     }).then(todo => {
 
         todo.name = req.body.name;
-
         todo.save().then(savedTodo => {
-
             res.redirect('/admin/todos');
-
         });
     });
 });
 
 router.delete('/:id', (req, res) => {
-
-
     Todo.deleteOne({
         _id: req.params.id
     }).then(result => {
