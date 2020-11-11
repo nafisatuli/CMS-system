@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 4500;
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -111,6 +113,6 @@ app.use('/admin/comments', comments);
 app.use('/admin/todos', todos);
 
 //listen to the port
-app.listen(4500, () => {
+app.listen(PORT, () => {
     console.log(`listening on port 4500`);
 });

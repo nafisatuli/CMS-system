@@ -1,5 +1,7 @@
 "use strict";
 
+var PORT = process.env.PORT || 4500;
+
 var express = require('express');
 
 var app = express();
@@ -115,6 +117,6 @@ app.use('/admin/categories', categories);
 app.use('/admin/comments', comments);
 app.use('/admin/todos', todos); //listen to the port
 
-app.listen(4500, function () {
+app.listen(PORT, function () {
   console.log("listening on port 4500");
 });
