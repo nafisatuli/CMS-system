@@ -1,7 +1,5 @@
 "use strict";
 
-var PORT = process.env.PORT || 4500;
-
 var express = require('express');
 
 var app = express();
@@ -17,6 +15,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
 var upload = require('express-fileupload');
+
+require("dotenv").config();
 
 var _require = require('./config/database'),
     mongoDbUrl = _require.mongoDbUrl;
@@ -117,6 +117,4 @@ app.use('/admin/categories', categories);
 app.use('/admin/comments', comments);
 app.use('/admin/todos', todos); //listen to the port
 
-app.listen(PORT, function () {
-  console.log("listening on port 4500");
-});
+app.listen(process.env.port || 4500);
