@@ -117,4 +117,7 @@ app.use('/admin/categories', categories);
 app.use('/admin/comments', comments);
 app.use('/admin/todos', todos); //listen to the port
 
-app.listen(process.env.port || 4500);
+var port = process.env.port || 4500;
+app.listen(port, function () {
+  console.log("Listening to port ".concat(port));
+});
