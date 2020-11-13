@@ -4,7 +4,7 @@
   "description": "a CMS in node.js",
   "main": "app.js",
   "scripts": {
-    "web": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "CMS"
