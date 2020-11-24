@@ -1,47 +1,27 @@
 <h1 class="stylePost">Create Post</h1>
-
 {{#each errors}}
-
 <div class="alert alert-danger">
-
     {{message}}
-
-
 </div>
-
-
 {{/each}}
-
-
-
 <form action='/admin/posts/create' method='post' enctype="multipart/form-data">
-
     <div class='form-group'>
         <label for='title'>Title</label>
         <input name='title' type='text' class='form-control' id='title' placeholder='Enter title' required />
-
     </div>
-
     <div class="form-group">
         <label for="file">File Upload</label>
         <input type="file" name="file" id="file" class="form-control">
     </div>
-
-
     <div class="form-group">
         <label for="category">Category</label>
         <select name="category" id="category" class="form-control">
-
-
             {{#each categories}}
             <option value="{{id}}">{{name}}</option>
             {{/each}}
-
         </select>
     </div>
-
-
-{{!-- 
+    {{!-- 
     <div class='form-group'>
         <label for='status'>Status</label>
         <select name='status' id='status' class='form-control'>
@@ -51,16 +31,6 @@
 
         </select>
     </div> --}}
-
-
-
-
-
-
-
-
-
-
     <div class='form-check'>
         <label for='allowComments' class="form-check-label">
             <input name='allowComments' type='checkbox' class='form-check-input' id='allowComments' />
@@ -73,11 +43,5 @@
         <textarea name='body' placeholder='Enter description' cols='30' rows='10' class="form-control" id='body'
             required></textarea>
     </div>
-
-
-
     <button type='submit' class='btn btn-primary'>Create Post</button>
-
-
-
 </form>

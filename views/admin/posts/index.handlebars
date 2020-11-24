@@ -1,6 +1,4 @@
 <h1 class="stylePost">All Posts</h1>
-
-
 <table class='table table-bordered'>
   <thead>
     <tr>
@@ -26,27 +24,26 @@
   </thead>
   <tbody>
     {{#each posts}}
-      <tr>
-        <td>
-          {{id}}
-        </td>
-        <td><img height="50px" class="img-responsive" src="/uploads/{{file}}" alt=""></td>
-        <td>
-          {{title}}
-        </td>
-        {{!-- <td>
+    <tr>
+      <td>
+        {{id}}
+      </td>
+      <td><img height="50px" class="img-responsive" src="/uploads/{{file}}" alt=""></td>
+      <td>
+        {{title}}
+      </td>
+      {{!-- <td>
           {{status}}
         </td> --}}
-        <td>{{category.name}}</td>
-        <td>
-          {{allowComments}}
-        </td>
-        <td>
-          {{generateDate date 'MMMM Do YYYY'}}
-        </td>
-        <td><a href="/post/{{slug}}">View</a></td>
-       
-      </tr>
+      <td>{{category.name}}</td>
+      <td>
+        {{allowComments}}
+      </td>
+      <td>
+        {{generateDate date 'MMMM Do YYYY'}}
+      </td>
+      <td><a href="/post/{{slug}}">View</a></td>
+    </tr>
     {{/each}}
   </tbody>
 </table>

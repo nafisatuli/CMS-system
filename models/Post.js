@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //slug for url
 const URLSlugs = require('mongoose-url-slugs');
-
-
 const PostSchema = new Schema({
 
         //user for post
@@ -49,7 +47,6 @@ const PostSchema = new Schema({
             ref: 'comments'
         }]
     },
-
 
     {
         usePushEach: true

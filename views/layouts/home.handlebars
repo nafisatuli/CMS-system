@@ -2,20 +2,16 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>Maven</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-
   <link href="/css/blog-home.css" rel="stylesheet">
-
 
   <link href="/css/blog-post.css" rel="stylesheet">
 
@@ -26,39 +22,19 @@
   {{>home/home-nav}}
   <!-- Page Content -->
   <div class="container">
-
-
     {{#if errors}}
-
-
     {{#each errors}}
-
-
     <div class="alert alert-danger">
-
-
       {{message}}
-
-
     </div>
-
     {{/each}}
-
-
     {{/if}}
-
-
     {{>home/form-msgs}}
-
-
     {{{body}}}
-
   </div>
   <!-- /.container -->
-
   <!-- Footer -->
   {{>home/footer}}
-
   <script>
     // Change the type of input to password or text 
     function Toggle() {

@@ -1,40 +1,23 @@
 <h1 class="stylePost">Edit Posts</h1>
-
-
 <form action="/admin/posts/edit/{{post.id}}?_method=PUT" method="post" enctype="multipart/form-data">
-
     <div class="form-group">
         <label for="title">Title</label>
         <input name="title" type="text" class="form-control" id="title" value="{{post.title}}">
-
     </div>
-
     <div class="form-group">
         <label for="file">File Upload</label>
         <input type="file" name="file" id="file" class="form-control">
     </div>
-
-
-
     <div class="form-group">
         <label for="category">Category</label>
         <select name="category" id="category" class="form-control">
-
             {{#select post.category}}
             {{#each categories}}
-
             <option value="{{id}}">{{name}}</option>
-
             {{/each}}
             {{/select}}
-
         </select>
     </div>
-
-
-
-
-
     {{!-- <div class="form-group">
         <label for="status">Status</label>
         <select name="status" id="status" class="form-control">
@@ -47,13 +30,6 @@
             {{/select}}
         </select>
     </div> --}}
-
-
-
-
-
-
-
     <div class="form-check">
         <label for="allowComments" class="form-check-label">
             <input name="allowComments" type="checkbox" {{#if post.allowComments}} checked="checked"
@@ -61,16 +37,9 @@
             Allow Comment
         </label>
     </div>
-
     <div class="form-group">
         <label for="body">Description</label>
         <textarea name='body' cols='30' rows='10' class="form-control" id='body'>{{post.body}}</textarea>
-
     </div>
-
-
-
     <button type="submit" class="btn btn-primary">Update Post</button>
-
-
 </form>

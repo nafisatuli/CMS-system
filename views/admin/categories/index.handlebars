@@ -10,17 +10,13 @@
             <button class="btn btn-primary" style="margin-top: 20px;">Create Category</button>
         </form>
     </div>
-
 </div>
 <br>
-
 <hr>
 <div class="row">
-
     <div class="col-sm-8">
         <h1 class="catgName">Categories Name</h1>
         <table class="table">
-
             <thead>
                 <tr>
                     <th>Id</th>
@@ -34,18 +30,13 @@
                     <td>{{name}}</td>
                     <td><a href="/admin/categories/edit/{{id}}" class="btn btn-info">Edit</a></td>
                     <td>
-                        <form action="/admin/categories/{{id}}?_method=DELETE" method="post">  
+                        <form action="/admin/categories/{{id}}?_method=DELETE" method="post">
                             <button class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
-
                 {{/each}}
-
             </tbody>
-
         </table>
-
     </div>
-
 </div>
