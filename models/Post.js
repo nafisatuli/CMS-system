@@ -22,10 +22,10 @@ const PostSchema = new Schema({
         slug: {
             type: String
         },
-        status: {
-            type: String,
-            default: 'public'
-        },
+        // status: {
+        //     type: String,
+        //     default: 'public'
+        // },
         allowComments: {
             type: Boolean,
             required: true
