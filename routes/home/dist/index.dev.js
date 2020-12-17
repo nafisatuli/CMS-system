@@ -16,6 +16,8 @@ var passport = require('passport');
 
 var LocalStrategy = require('passport-local').Strategy;
 
+var nodemailer = require('nodemailer');
+
 router.all('/*', function (req, res, next) {
   req.app.locals.layout = 'home';
   next();
@@ -195,6 +197,40 @@ router.get('/post/:slug', function (req, res) {
         categories: categories
       });
     });
+  });
+});
+router.get('/contact', function (req, res) {
+  res.render('home/contact');
+}); // POST route from contact form
+
+router.post('/contact', function (req, res) {
+  var GMAIL_USER = process.env.GMAIL_USER;
+  var GMAIL_PASS = process.env.GMAIL_PASS; // Instantiate the SMTP server
+
+  var smtpTrans = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: GMAIL_USER,
+      pass: GMAIL_PASS
+    }
+  }); // Specify what the email will look like
+
+  var mailOpts = {
+    from: 'Your sender info here',
+    // This is ignored by Gmail
+    to: GMAIL_USER,
+    subject: 'New message from contact form of Maven',
+    text: "".concat(req.body.name, " (").concat(req.body.email, ") says: ").concat(req.body.message)
+  }; // Attempt to send the email
+
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+    if (error) {
+      console.log(error);
+    } else {
+      res.render('home/contact-success');
+    }
   });
 });
 module.exports = router;
