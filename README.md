@@ -14,11 +14,12 @@ I was thinking about a content management system where everyone who connected wi
 1. Login System.
 2. Registration System.
 3. A general dashboard in the admin section.
-4. General users can read posts, comments, and about sections.
+4. General/Guest users can read posts, comments, and about sections.
 5. Registered users can post content, edit and delete their own posts.
 6. Registered users can comment on other’s posts where comments are allowed.
 7. Registered users can delete or change the status of their comments.
 8. Registered users can have their own to-do list for organizing their tasks.
+9. A support contact form for users to email directly. 
 
 ### Platform: Web
 
