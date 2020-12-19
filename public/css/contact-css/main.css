@@ -69,8 +69,8 @@ iframe {
 .contact1 {
   width: 100%;
   min-height: 100%;
-  padding: 30px;
-
+  padding: 10px;
+  text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -81,12 +81,15 @@ iframe {
   align-items: center;
 }
 
+.contactGet {
+  font-size: 45px;
+}
+
 .container-contact1 {
   width: 1500px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -95,39 +98,58 @@ iframe {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-
-  padding: 90px 130px 88px 148px;
+  text-align: center;
+  padding: 20px 110px 110px 20px;
 }
 
 /*------------------------------------------------------------------
 [  ]*/
 .contact1-pic {
-  width: 296px;
+  width: 400px;
 }
 
 .contact1-pic img {
-  max-width: 100%;
+  max-width: 80%;
 }
 
 
 /*------------------------------------------------------------------
 [  ]*/
 .contact1-form {
-  width: 400px;
+  width: 550px;
 }
 
 .contact1-form-title {
-  display: block;
-  font-family: Montserrat-ExtraBold;
-  font-size: 35px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
   color: #333333;
-  line-height: 1.2;
   text-align: center;
-  padding-bottom: 44px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  padding-left: 150px;
+  animation-name: aboutPara;
+  animation-duration: 4s;
+  display: block;
+  float: none;
 }
 
+@keyframes aboutPara {
+  0% {
+    color: rgb(29, 10, 10);
+  }
+
+  50% {
+    color: rgb(155, 135, 135);
+  }
+
+  100% {
+    color: rgb(73, 70, 70);
+  }
+}
+
+
 input.input1 {
-  height: 50px;
+  height: 70px;
   border-radius: 25px;
   padding: 0 30px;
 }
@@ -137,7 +159,7 @@ input.input1+.shadow-input1 {
 }
 
 textarea.input1 {
-  min-height: 250px;
+  min-height: 350px;
   border-radius: 25px;
   padding: 12px 30px;
 }
@@ -159,7 +181,7 @@ textarea.input1+.shadow-input1 {
   width: 100%;
   background: #e6e6e6;
   font-family: Montserrat-Bold;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 1.5;
   color: #666666;
 }
@@ -174,7 +196,7 @@ textarea.input1+.shadow-input1 {
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(87, 184, 70, 0.5);
+  color: rgba(44, 49, 43, 0.5);
 }
 
 .input1:focus+.shadow-input1 {
@@ -211,7 +233,7 @@ textarea.input1+.shadow-input1 {
   min-width: 193px;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #333333;
   font-family: Montserrat-Bold;
   font-size: 20px;
   line-height: 1.5;
@@ -306,7 +328,7 @@ textarea.input1+.shadow-input1 {
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 
-.validate-input {
+/* .validate-input {
   position: relative;
 }
 
@@ -368,4 +390,4 @@ textarea.input1+.shadow-input1 {
     visibility: visible;
     opacity: 1;
   }
-}
+} */
