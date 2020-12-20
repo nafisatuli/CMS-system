@@ -39,7 +39,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-    res.render('home/about');
+
+
+    Category.find({}).then(categories => {
+        res.render('home/about', {
+
+            categories: categories,
+
+        });
+    });
 });
 
 //create route for login and register

@@ -106,10 +106,11 @@ iframe {
 [  ]*/
 .contact1-pic {
   width: 400px;
+  margin-top: 70px;
 }
 
 .contact1-pic img {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 

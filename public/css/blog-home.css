@@ -36,14 +36,16 @@ body {
 
 
 .cardCat {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .catHeadline {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 35px;
   color: rgb(63, 58, 58);
   text-shadow: 2px 2px 5px rgb(105, 102, 102);
+  text-align: center;
 }
 
 .catHeadline:hover {
@@ -93,6 +95,7 @@ body {
 .postTitle {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 900;
+
 }
 
 
@@ -109,7 +112,7 @@ body {
   font-size: 60px;
   line-height: 1em;
   animation-name: headline;
-  animation-duration: 6s;
+  animation-duration: 3s;
   text-shadow: 2px 2px 5px rgb(105, 102, 102);
 }
 
@@ -169,7 +172,7 @@ figure::after {
   z-index: -1;
   background-image: url("/uploads/images/share.png");
   background-size: 100% 100%;
-  filter: blur(15px) saturate(2);
+  filter: blur(2px) saturate(1);
 }
 
 .half-width img {
@@ -182,8 +185,7 @@ figure::after {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 900;
   color: rgb(29, 10, 10);
-  font-size: medium;
-
+  font-size: 25px;
   animation-name: aboutPara;
   animation-duration: 4s;
 }
@@ -204,12 +206,12 @@ figure::after {
 
 .contactPara {
   padding-top: 30px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 900;
   color: rgb(29, 10, 10);
   font-size: 30px;
   animation-name: aboutPara;
-  animation-duration: 4s;
+  animation-duration: 2s;
 }
 
 @keyframes aboutPara {
@@ -222,7 +224,7 @@ figure::after {
   }
 
   100% {
-    color: rgb(73, 70, 70);
+    color: rgb(54, 52, 52);
   }
 }
 
