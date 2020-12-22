@@ -7,7 +7,7 @@ I was thinking about a content management system where everyone who connected wi
 ## Type of User:
 
 1. Registered User
-2. General User
+2. Guest User
 
 ## Key Features
 
@@ -19,7 +19,7 @@ I was thinking about a content management system where everyone who connected wi
 6. Registered users can comment on other’s posts where comments are allowed.
 7. Registered users can delete or change the status of their comments.
 8. Registered users can have their own to-do list for organizing their tasks.
-9. A support contact form for users to email directly. 
+9. A support contact form for users to email directly.
 
 ### Platform: Web
 
