@@ -1,4 +1,6 @@
 #dependencies
+.vscode/
+settings.json
 /node_modules
 .env
-.vscode/
+
