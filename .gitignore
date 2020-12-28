@@ -1,6 +1,7 @@
 #dependencies
+.DS_Store
 /node_modules
-/dist
+dist/
 .vscode/
 settings.json
 .env
