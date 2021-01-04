@@ -114,7 +114,7 @@ app.use('/admin/comments', comments);
 app.use('/admin/todos', todos);
 
 //listen to the port
-const port = process.env.port || 4500;
+const port = process.env.PORT || 4500;
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
 });
