@@ -1,6 +1,8 @@
 // CODE_CHANGES = getGitChanges()  Some logic in a function that will return true or false 
 pipeline{
     agent any
+    // define a global variable to hold the groovy script
+
     //we can define our own environment variables using the environment attribute
     // environment{
     //     NEW_VERSION = "1.3.0"
@@ -18,19 +20,25 @@ pipeline{
         booleanParam (name:'executeTests', defaultValue: true, description:'')
     }
         stages{
-        stage("build"){
-            when{
-                expression{
-                    //When should this stage or below steps should execute can be defined fro each build stage 
-                    //For Example using Environment Variable 
-                    // BRANCH_NAME == 'dev' || 'master'
-                    // You can define your own like this
-                    // BRANCH_NAME == 'dev' || CODE_CHANGES == true
-                    echo "expression build"
-                }
-            }
+        stage("init"){
+            
             steps{
-                echo 'building the application...'
+                gv =load "sript.groovy" //call or load the groovy script in gv variable
+            }
+        }
+        stage("build"){
+            // when{
+            //     expression{
+            //         //When should this stage or below steps should execute can be defined fro each build stage 
+            //         //For Example using Environment Variable 
+            //         // BRANCH_NAME == 'dev' || 'master'
+            //         // You can define your own like this
+            //         // BRANCH_NAME == 'dev' || CODE_CHANGES == true
+            //         echo "expression build"
+            //     }
+            // }
+            steps{
+                gv.buildAPP()
                 // echo " build version ${NEW_VERSION}" works only in double quotes 
             }
         }
@@ -39,12 +47,12 @@ pipeline{
                 expression{
                     //When should this stage or below steps should execute can be defined fro each build stage 
                     // we can use parameters here
-                    // params.executeTests
-                    echo "expression test"
+                    params.executeTests
+                    // echo "expression test"
                 }
             }
             steps{
-                echo 'testing the application...'
+                gv.testAPP()
             }
         }
         stage("deploy"){
@@ -62,8 +70,7 @@ pipeline{
             //     }
             // }
             steps{
-                echo 'deploying the application...'
-                echo "deploying version ${params.VERSION}"
+                gv.deployAPP()
             }
         }
     }
