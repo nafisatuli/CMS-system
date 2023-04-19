@@ -75,9 +75,18 @@ pipeline{
             //         echo "expression deploy"
             //     }
             // }
+            //Stops the build until user input something.
+            input{
+                message "Select the environment to deploy to"
+                ok "done"
+                parameters{
+                    choice (name:'ENV', choices: ['stage','dev','prod'], description:'')
+                }
+            }
             steps{
                 script{
                 gv.deployAPP()
+                echo "deploying to ${ENV}"
                 }
             }
         }
