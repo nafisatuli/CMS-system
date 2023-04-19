@@ -13,9 +13,9 @@ pipeline{
     // }
     // Another important thing is parameters
     parameters{
-        // string (name:'VERSION', defaultvalue: '', description:'version to deploy on prod')
+        // string (name:'VERSION', defaultValue: '', description:'version to deploy on prod')
         choice (name:'VERSION', choices: ['1.0','1.2','1.3'], description:'')
-        booleanParam (name:'executeTests', defaultvalue: true, description:'')
+        booleanParam (name:'executeTests', defaultValue: true, description:'')
     }
         stages{
         stage("build"){
@@ -26,6 +26,7 @@ pipeline{
                     // BRANCH_NAME == 'dev' || 'master'
                     // You can define your own like this
                     // BRANCH_NAME == 'dev' || CODE_CHANGES == true
+                    echo "expression build"
                 }
             }
             steps{
@@ -39,6 +40,7 @@ pipeline{
                     //When should this stage or below steps should execute can be defined fro each build stage 
                     // we can use parameters here
                     // params.executeTests
+                    echo "expression test"
                 }
             }
             steps{
@@ -56,6 +58,7 @@ pipeline{
             when{
                 expression{
                     //When should this stage or below steps should execute can be defined fro each build stage 
+                    echo "expression deploy"
                 }
             }
             steps{
@@ -67,12 +70,15 @@ pipeline{
     post{
         always{
             //Ececute always if build is success or failure useful to notify team about build status
+            echo "always"
         }
         success{
             //Ececute when build is success useful to notify team about build status
+            echo "success"
         }
         failure{
             //Ececute when build is failure useful to notify team about build status
+            echo "failure"
         }
     }
 }
