@@ -1,4 +1,5 @@
 // CODE_CHANGES = getGitChanges()  Some logic in a function that will return true or false 
+def gv
 pipeline{
     agent any
     // define a global variable to hold the groovy script
