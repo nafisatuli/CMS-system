@@ -23,7 +23,9 @@ pipeline{
         stages{
         stage("init"){            
             steps{
-                gv =load "script.groovy" //call or load the groovy script in gv variable
+                script{
+                gv = load "script.groovy" //call or load the groovy script in gv variable
+                }
             }
         }
         stage("build"){
@@ -38,8 +40,10 @@ pipeline{
             //     }
             // }
             steps{
+                script{
                 gv.buildAPP()
                 // echo " build version ${NEW_VERSION}" works only in double quotes 
+                }
             }
         }
         stage("test"){
@@ -52,7 +56,9 @@ pipeline{
                 }
             }
             steps{
+                script{
                 gv.testAPP()
+                }
             }
         }
         stage("deploy"){
@@ -70,7 +76,9 @@ pipeline{
             //     }
             // }
             steps{
+                script{
                 gv.deployAPP()
+                }
             }
         }
     }
