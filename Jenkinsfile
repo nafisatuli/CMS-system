@@ -15,11 +15,11 @@ pipeline{
     //     maven Maven-3.9 // name of the maven in jenkins server plugin
     // }
     // Another important thing is parameters
-    parameters{
-        // string (name:'VERSION', defaultValue: '', description:'version to deploy on prod')
-        choice (name:'VERSION', choices: ['1.0','1.2','1.3'], description:'')
-        booleanParam (name:'executeTests', defaultValue: true, description:'')
-    }
+    // parameters{
+    //     // string (name:'VERSION', defaultValue: '', description:'version to deploy on prod')
+    //     choice (name:'VERSION', choices: ['1.0','1.2','1.3'], description:'')
+    //     booleanParam (name:'executeTests', defaultValue: true, description:'')
+    // }
         stages{
         stage("init"){            
             steps{
@@ -28,7 +28,7 @@ pipeline{
                 }
             }
         }
-        stage("build"){
+        stage("build npm"){
             // when{
             //     expression{
             //         //When should this stage or below steps should execute can be defined fro each build stage 
@@ -46,21 +46,29 @@ pipeline{
                 }
             }
         }
-        stage("test"){
-            when{
-                expression{
-                    //When should this stage or below steps should execute can be defined fro each build stage 
-                    // we can use parameters here
-                    params.executeTests
-                    // echo "expression test"
-                }
-            }
+        stage("build image"){
             steps{
                 script{
-                gv.testAPP()
+                gv.buildImage()
+                // echo " build version ${NEW_VERSION}" works only in double quotes 
                 }
             }
         }
+        // stage("test"){
+        //     when{
+        //         expression{
+        //             //When should this stage or below steps should execute can be defined fro each build stage 
+        //             // we can use parameters here
+        //             // params.executeTests
+        //             // echo "expression test"
+        //         }
+        //     }
+        //     steps{
+        //         script{
+        //         gv.testAPP()
+        //         }
+        //     }
+        // }
         stage("deploy"){
         //  Another way to define or get credential from jenkins server is using wrapper syntax like this 
         // withCredentials([
@@ -75,35 +83,36 @@ pipeline{
             //         echo "expression deploy"
             //     }
             // }
-            //Stops the build until user input something.
-            input{
-                message "Select the environment to deploy to"
-                ok "done"
-                parameters{
-                    choice (name:'ENV', choices: ['stage','dev','prod'], description:'')
-                }
-            }
+            // //Stops the build until user input something.
+            // input{
+            //     message "Select the environment to deploy to"
+            //     ok "done"
+            //     parameters{
+            //         choice (name:'ENV', choices: ['stage','dev','prod'], description:'')
+            //     }
+            // }
             steps{
                 script{
-                gv.deployAPP()
-                echo "deploying to ${ENV}"
+                    echo 'deploying the application'
+                // gv.deployAPP()
+                // echo "deploying to ${ENV}"
                 }
             }
         }
     }
-    post{
-        always{
-            //Ececute always if build is success or failure useful to notify team about build status
-            echo "always"
-        }
-        success{
-            //Ececute when build is success useful to notify team about build status
-            echo "success"
-        }
-        failure{
-            //Ececute when build is failure useful to notify team about build status
-            echo "failure"
-        }
-    }
+    // post{
+    //     always{
+    //         //Ececute always if build is success or failure useful to notify team about build status
+    //         echo "always"
+    //     }
+    //     success{
+    //         //Ececute when build is success useful to notify team about build status
+    //         echo "success"
+    //     }
+    //     failure{
+    //         //Ececute when build is failure useful to notify team about build status
+    //         echo "failure"
+    //     }
+    // }
 }
 
