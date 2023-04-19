@@ -55,12 +55,12 @@ pipeline{
         //     sh "some script ${USER} ${PASS}"
         // }
 
-            when{
-                expression{
-                    //When should this stage or below steps should execute can be defined fro each build stage 
-                    echo "expression deploy"
-                }
-            }
+            // when{
+            //     expression{
+            //         //When should this stage or below steps should execute can be defined fro each build stage 
+            //         echo "expression deploy"
+            //     }
+            // }
             steps{
                 echo 'deploying the application...'
                 echo "deploying version ${params.VERSION}"
