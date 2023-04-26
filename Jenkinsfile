@@ -28,7 +28,7 @@ pipeline{
                 }
             }
         }
-        stage("build npm"){
+        stage("test"){
             // when{
             //     expression{
             //         //When should this stage or below steps should execute can be defined fro each build stage 
@@ -36,19 +36,28 @@ pipeline{
             //         // BRANCH_NAME == 'dev' || 'master'
             //         // You can define your own like this
             //         // BRANCH_NAME == 'dev' || CODE_CHANGES == true
-            //         echo "expression build"
+                   
             //     }
             // }
             steps{
-                script{
-                gv.buildAPP()
-                // echo " build version ${NEW_VERSION}" works only in double quotes 
-                }
+                // script{
+                // gv.buildAPP()
+                // // echo " build version ${NEW_VERSION}" works only in double quotes 
+                // }
+                 echo "Testing the application"
+                echo "branch pipeline for ${BRANCH_NAME}"
             }
         }
         stage("build image"){
+            when {
+                expression{
+                        BRANCH_NAME = 'master'
+                }
+            }
             steps{
+                
                 script{
+                echo 'building the image'
                 gv.buildImage()
                 // echo " build version ${NEW_VERSION}" works only in double quotes 
                 }
@@ -70,6 +79,11 @@ pipeline{
         //     }
         // }
         stage("deploy"){
+            when {
+                expression{
+                        BRANCH_NAME = 'master'
+                }
+            }
         //  Another way to define or get credential from jenkins server is using wrapper syntax like this 
         // withCredentials([
         //     usernamePassword(credentials:'id of the jenkins credentials', usernameVariable: USER, passwordVariable: PASS)
