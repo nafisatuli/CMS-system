@@ -51,7 +51,7 @@ pipeline{
         stage("build image"){
             when {
                 expression{
-                        BRANCH_NAME = 'master'
+                        BRANCH_NAME == 'master'
                 }
             }
             steps{
@@ -81,7 +81,7 @@ pipeline{
         stage("deploy"){
             when {
                 expression{
-                        BRANCH_NAME = 'master'
+                        BRANCH_NAME == 'master'
                 }
             }
         //  Another way to define or get credential from jenkins server is using wrapper syntax like this 
