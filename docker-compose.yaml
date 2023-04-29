@@ -4,7 +4,6 @@ services:
     build: .
     ports:
      - 4500:4500
-
     depends_on:
      - "mongodb"
 
