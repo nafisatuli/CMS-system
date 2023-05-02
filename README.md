@@ -1,29 +1,34 @@
-﻿# About My Project
+# Docker-Practice
 
-## Project Idea
+This is a repository containing a Dockerfile and docker-compose.yml for the CMS-system application. The Dockerfile and docker-compose.yml files are modified versions of the original files to allow for easier containerization and deployment.
 
-I was thinking about a content management system where everyone who connected with development and programming, so they can share their knowledge in an open platform. We can see that many CSE students want to build their career in developing whereas some of them lose the track. So here I got an idea where the experts will share their knowledge by posting many content and people can follow the suggestions. There will be a comment system where people will ask their queries in the relevant topic and will get their answers. It will be a great platform where experts can share their best knowledge and students will not fall out from the track.
+## Prerequisites
+1.Docker
+2.Docker Compose
 
-## Type of User:
+## Getting Started
+Clone the repository:
 
-1. Registered User
-2. Guest User
+- git clone https://github.com/Ans-Saeed/Docker-Practice.git
+- cd Docker-Practice
 
-## Key Features
+## Build the Docker image:
 
-1. Login System.
-2. Registration System.
-3. A general dashboard in the admin section.
-4. General/Guest users can read posts, comments, and about sections.
-5. Registered users can post content, edit and delete their own posts.
-6. Registered users can comment on other’s posts where comments are allowed.
-7. Registered users can delete or change the status of their comments.
-8. Registered users can have their own to-do list for organizing their tasks.
-9. A support contact form for users to email directly.
+- docker build -t cms:1.0 .
+- Start the containers using docker-compose:
+- docker-compose up
 
-### Platform: Web
+This will start the my-app, mongodb, and mongo-express containers.
 
-Project title: Maven
-Tools: Handlebars, CSS, Bootstrap, Node.js-Express, MongoDB, Authentication etc.
+Open a web browser and navigate to http://localhost:4500 to access the CMS-system application.
 
-**The purpose of the project is to create an open platform for the people who love to share and gain knowledge.**
+## Configuration
+The following environment variables can be set in the docker-compose.yml file:
+
+1.MONGO_INITDB_ROOT_USERNAME: the MongoDB root username (default: "admin")
+2.MONGO_INITDB_ROOT_PASSWORD: the MongoDB root password (default: "password")
+3.ME_CONFIG_MONGODB_ADMINUSERNAME: the Mongo Express admin username (default: "admin")
+4.ME_CONFIG_MONGODB_ADMINPASSWORD: the Mongo Express admin password (default: "password")
+
+## License
+The code in this repository is licensed under the MIT License.
